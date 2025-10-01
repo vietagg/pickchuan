@@ -100,7 +100,7 @@
       let currentPage = 1;
 
       async function fetchData() {
-        const res = await fetch(API_URL + "?api=1");
+        const res = await fetch(API_URL + "?api=list");
         products = await res.json();
         render();
       }
