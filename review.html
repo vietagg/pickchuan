@@ -94,6 +94,7 @@
       const el = document.getElementById("reviewContent");
       el.innerHTML = `
         <h1 class="text-3xl font-bold mb-4">${product.title}</h1>
+        <h2 class="text-xl font-semibold mb-2">📌 Hình ảnh sản phẩm</h2>
         <div class="review-images">
           ${product.images.map((img, i) => `
             <div class="card ${i === 0 ? 'active' : ''}">
@@ -101,24 +102,86 @@
             </div>
           `).join("")}
         </div>
+        <h2 class="text-xl font-semibold mb-4">📌 Bài viết</h2>
+        <section class="mb-4">
+          <h2 class="section-title py-5">📄 Giới thiệu</h2>
+          <div class="section-content">
+          ${product.gioithieu || ""}
+          </div>
+        </section>
+        <section class="mb-4">
+          <h2 class="section-title">📊 Thông số kỹ thuật</h2>
+          <div class="section-content">
+          ${product.thongso || ""}
+          </div>
+        </section>
+        <section class="mb-4">
+          <h2 class="section-title">🖼️ Tổng quan & thiết kế</h2>
+          <div class="section-content">
+          ${product.tongquan || ""}
+          </div>
+        </section>
+        <section class="mb-4">
+          <h2 class="section-title">⚡ Hiệu năng & tính năng</h2>
+          <div class="section-content">
+           ${product.hieunang || ""}
+          </div>
+        </section>
+        <section class="mb-4">
+          <h2 class="section-title">🎯 Trải nghiệm thực tế</h2>
+          <div class="section-content">
+          ${product.trainghiem || ""}
+          </div>
+        </section>
+        <section class="mb-4">
+          <h2 class="section-title">✅ Ưu điểm</h2>
+          <div class="section-content">
+          ${product.uudiem || ""}
+          </div>
+        </section>
+        <section class="mb-4">
+          <h2 class="section-title">❌ Nhược điểm</h2>
+          <div class="section-content">
+         ${product.nhuocdiem || ""}
+          </div>
+        </section>
+        <section class="mb-4">
+          <h2 class="section-title">🔄 So sánh</h2>
+          <div class="section-content">
+          ${product.sosanh || ""}
+          </div>
+        </section>
+        <section class="mb-4">
+          <h2 class="section-title">🏁 Kết luận</h2>
+          <div class="section-content">
+          ${product.ketluan || ""}
+          </div>
+        </section>
+        
+        <section class="mb-4">
+          <h2 class="section-title">🛒 Nơi bán</h2>
+          <div class="section-content">
+            <div class="flex gap-6 mt-3">
+              <!-- Shopee -->
+              <a href="${product.link.shopee ||""}" target="_blank" class="transition transform hover:scale-110">
+                <img src="https://drive.google.com/thumbnail?id=1qEFq9Y9N2y-vuYfA7EwpfbuFu3ibY02E" 
+                    alt="Shopee" style="width:100px;height:100px;object-fit:contain;">
+              </a>
 
-        <h2 class="text-xl font-semibold mb-2">📄 Giới thiệu</h2>
-        <div class="prose mb-6">${product.gioithieu || ""}</div>
+              <!-- Lazada -->
+              <a href="${product.link.lazada || ""}" target="_blank" class="transition transform hover:scale-110">
+                <img src="https://drive.google.com/thumbnail?id=1Q_TuaZAAfGFZsOdvoO3ruMUe1eAElod3" 
+                    alt="Lazada" style="width:100px;height:100px;object-fit:contain;">
+              </a>
 
-        <h2 class="text-xl font-semibold mb-2">📊 Thông số kỹ thuật</h2>
-        <div class="prose mb-6">${product.thongso || ""}</div>
-
-        <h2 class="text-xl font-semibold mb-2">🎯 Trải nghiệm thực tế</h2>
-        <div class="prose mb-6">${product.trainghiem || ""}</div>
-
-        <h2 class="text-xl font-semibold mb-2">✅ Ưu điểm</h2>
-        <div class="prose mb-6">${product.uudiem || ""}</div>
-
-        <h2 class="text-xl font-semibold mb-2">❌ Nhược điểm</h2>
-        <div class="prose mb-6">${product.nhuocdiem || ""}</div>
-
-        <h2 class="text-xl font-semibold mb-2">🏁 Kết luận</h2>
-        <div class="prose mb-6">${product.ketluan || ""}</div>
+              <!-- TikTok Shop -->
+              <a href="${product.link.tiktok || ""}" target="_blank" class="transition transform hover:scale-110">
+                <img src="https://drive.google.com/thumbnail?id=1KPH2_VMy5H5hY6-ySLcEOCDcgNZ2uiGx" 
+                    alt="TikTok Shop" style="width:100px;height:100px;object-fit:contain;">
+              </a>
+            </div>
+          </div>
+        </section>
 
         <!-- Feedback -->
         <section class="mb-6">

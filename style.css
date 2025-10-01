@@ -27,41 +27,59 @@ body {
 }
 
 /* Bảng trong section */
-.section-content {
-  padding-left: 20px;
-  margin-left: 28px;
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #374151;
+#suggestions { max-height: 320px; overflow:auto; }
+.suggestion-item {
+  padding: 8px 10px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #111827;
 }
+.suggestion-item:hover, .suggestion-item.active {
+  background-color: #f3f4f6;
+}
+.suggestion-sub {
+  display:block;
+  color:#6b7280;
+  font-size:12px;
+  margin-top:4px;
+}
+/* Hình ảnh */
 .section-content table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: collapse; /* gộp viền */
   margin-top: 10px;
   background: #fff;
   border-radius: 8px;
-  overflow: hidden;
+  overflow: hidden; /* bo góc cho bảng */
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
+
 .section-content th {
-  background: #f3f4f6;
+  background: #f3f4f6;  /* nền xám nhạt */
   font-weight: 600;
   text-align: left;
   padding: 10px 12px;
   border-bottom: 2px solid #e5e7eb;
 }
+
 .section-content td {
   padding: 10px 12px;
   border-bottom: 1px solid #e5e7eb;
 }
-.section-content tr:last-child td { border-bottom: none; }
-.section-content tr:nth-child(even) td { background: #fafafa; }
+
+.section-content tr:last-child td {
+  border-bottom: none; /* bỏ viền hàng cuối */
+}
+
+.section-content tr:nth-child(even) td {
+  background: #fafafa; /* sọc nền */
+}
 
 .review-images {
   width: 100%;
   display: flex;
   justify-content: center;
-  height: 250px;
+  height: 270px;
   gap: 1px;
 }
 
