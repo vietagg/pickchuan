@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PickChuẩn - Trang chủ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+      <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+        <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-500 to-orange-500 bg-clip-text text-transparent">
+          PickChuẩn
+        </h1>
+        <!-- Menu -->
+        <nav class="hidden md:block">
+          <ul class="flex space-x-6">
+            <li><a href="index.html" class="text-blue-600 font-medium hover:text-orange-500 transition">Trang chủ</a></li>
+            <li><a href="review.html" class="text-gray-600 hover:text-orange-500 transition">Review</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Bảng xếp hạng</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Blog</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Liên hệ</a></li>
+          </ul>
+        </nav>
+        <!-- Search -->
+        <div class="hidden md:flex items-center ml-4 relative">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Tìm sản phẩm..."
+            class="w-64 border border-gray-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
+            oninput="handleSearch(this.value)"
+          />
+          <div id="suggestions" class="absolute left-0 right-0 mt-1 bg-white border border-gray-200 rounded-md shadow-sm z-50 hidden"></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Banner -->
+    <section class="text-white py-20 md:py-32 bg-cover bg-center"
+      style="background-image:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1470&q=80')">
+      <div class="container mx-auto px-4 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">PickChuẩn – Chọn đúng, mua chuẩn</h1>
+        <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Review & bảng xếp hạng sản phẩm chính xác, giúp bạn mua sắm thông minh hơn.</p>
+        <a href="review.html" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-lg transition transform hover:scale-105">Xem bảng xếp hạng</a>
+      </div>
+    </section>
+
+    <!-- Main -->
+    <main class="container mx-auto px-4 py-12 flex flex-col lg:flex-row gap-10">
+      <!-- Danh sách sản phẩm -->
+      <div class="lg:w-3/4 space-y-12">
+        <h2 class="text-2xl font-bold mb-6">Danh sách sản phẩm</h2>
+        <div id="productList" class="space-y-12"></div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="lg:w-1/4 space-y-6">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-bold mb-4 text-gray-800 border-b pb-2">Bài viết nổi bật</h3>
+          <ul id="featuredList" class="space-y-4"></ul>
+        </div>
+      </aside>
+    </main>
+
+    <!-- Pagination -->
+    <div id="pagination" class="flex justify-center mt-10 mb-12"></div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 mt-4">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div class="md:col-span-2">
+            <h2 class="text-3xl font-bold text-blue-500 mb-4">PickChuẩn</h2>
+            <p class="text-gray-300 mb-4">Blog review đánh giá sản phẩm chuẩn.</p>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4 border-b pb-2">Liên kết nhanh</h3>
+            <ul class="space-y-2">
+              <li><a href="index.html" class="text-gray-300 hover:text-white transition">Trang chủ</a></li>
+              <li><a href="review.html" class="text-gray-300 hover:text-white transition">Review</a></li>
+              <li><a href="#" class="text-gray-300 hover:text-white transition">Blog</a></li>
+              <li><a href="#" class="text-gray-300 hover:text-white transition">Liên hệ</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+          <p>© 2025 PickChuẩn. Tất cả quyền được bảo lưu.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // 👉 THAY bằng URL Web App Apps Script sau khi deploy (Publish > Deploy as Web App)
+      const API_URL = "https://script.google.com/macros/s/AKfycbxnVUqnwEfy0OKF9kaaFscKdwpBC7U7J_OBw8_zgjDGPr94TIx0yX9JxrOUmjYLHXs/exec";
+
+      const itemsPerPage = 4;
+      let products = [];
+      let currentPage = 1;
+
+      async function fetchData() {
+        const res = await fetch(API_URL + "?api=1");
+        products = await res.json();
+        render();
+      }
+
+      function render() {
+        const keyword = document.getElementById("searchInput").value.toLowerCase();
+        const filtered = products.filter(p => p.title.toLowerCase().includes(keyword));
+
+        const totalPages = Math.ceil(filtered.length / itemsPerPage);
+        const startIdx = (currentPage - 1) * itemsPerPage;
+        const paginated = filtered.slice(startIdx, startIdx + itemsPerPage);
+
+        // Danh sách sản phẩm
+        const list = document.getElementById("productList");
+        list.innerHTML = "";
+        list.className = "grid grid-cols-1 md:grid-cols-2 gap-6";
+
+        paginated.forEach((item) => {
+          list.innerHTML += `
+            <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
+              <img src="${item.image}" alt="${item.title}" class="w-auto h-auto object-cover" />
+              <div class="p-4 flex flex-col flex-grow">
+                <h3 class="text-lg font-semibold text-gray-800 mb-3">${item.title}</h3>
+                <a href="review.html?id=${item.id}" 
+                   class="inline-block bg-orange-500 hover:bg-orange-600 text-white text-sm px-4 py-2 rounded-md font-medium transition mt-auto">
+                  Xem chi tiết
+                </a>
+              </div>
+            </div>`;
+        });
+
+        // Featured list
+        const featured = document.getElementById("featuredList");
+        featured.innerHTML = products.slice(0, 5).map(item => `
+          <li>
+            <a href="review.html?id=${item.id}" class="flex items-start group">
+              <div class="flex-shrink-0 w-16 h-16 bg-gray-200 rounded-md overflow-hidden">
+                <img src="${item.image}" class="w-full h-full object-cover"/>
+              </div>
+              <div class="ml-3">
+                <h4 class="text-sm font-medium text-gray-800 group-hover:text-orange-500 transition">${item.title}</h4>
+              </div>
+            </a>
+          </li>
+        `).join("");
+
+        // Pagination
+        const pag = document.getElementById("pagination");
+        pag.innerHTML = "";
+        for (let i = 1; i <= totalPages; i++) {
+          pag.innerHTML += `
+            <button onclick="setPage(${i})" class="mx-1 px-4 py-2 rounded-lg border ${currentPage === i ? "bg-orange-500 text-white" : "bg-white text-gray-700 hover:bg-gray-100"}">${i}</button>`;
+        }
+      }
+
+      function setPage(page) {
+        currentPage = page;
+        render();
+      }
+
+      function handleSearch(value) {
+        currentPage = 1;
+        render();
+
+        const suggestionsBox = document.getElementById("suggestions");
+        if (!value) {
+          suggestionsBox.classList.add("hidden");
+          return;
+        }
+        const sug = products.filter(p => p.title.toLowerCase().includes(value.toLowerCase())).slice(0, 5);
+        if (sug.length === 0) {
+          suggestionsBox.classList.add("hidden");
+          return;
+        }
+        suggestionsBox.innerHTML = sug.map(s => `<div class="px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer" onclick="selectSuggestion('${s.title}')">${s.title}</div>`).join("");
+        suggestionsBox.classList.remove("hidden");
+      }
+
+      function selectSuggestion(title) {
+        document.getElementById("searchInput").value = title;
+        document.getElementById("suggestions").classList.add("hidden");
+        render();
+      }
+
+      fetchData();
+    </script>
+  </body>
+</html>

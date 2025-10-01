@@ -1,0 +1,14 @@
+[build]
+  publish = "."
+
+# Redirect tất cả /review/:id → review.html
+[[redirects]]
+  from = "/review/*"
+  to = "/review.html"
+  status = 200
+
+# Redirect tất cả / → index.html (optional, Netlify đã mặc định)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

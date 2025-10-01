@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Review sản phẩm</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 font-[Inter]">
+
+  <!-- Header -->
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between">
+      <h1 class="text-3xl font-bold text-orange-500">PickChuẩn</h1>
+      <nav class="hidden md:block">
+        <ul class="flex space-x-6">
+          <li><a href="index.html" class="text-blue-600 font-medium hover:text-orange-500 transition">Trang chủ</a></li>
+          <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Review</a></li>
+          <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Bảng xếp hạng</a></li>
+          <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Blog</a></li>
+          <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Liên hệ</a></li>
+        </ul>
+      </nav>
+      <div class="hidden md:flex items-center ml-4 relative">
+        <input id="searchInput" type="text" placeholder="Tìm sản phẩm..."
+          class="w-64 border border-gray-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"/>
+        <div id="suggestions" class="hidden absolute top-full left-0 right-0 mt-1 bg-white border rounded-md shadow z-50"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="review-main flex max-w-7xl w-full mx-auto mt-6 gap-6">
+    <!-- Sidebar trái -->
+    <aside class="w-[18%] bg-gray-50 p-4 border rounded-lg">
+      <h3 class="text-sm font-semibold mb-4">📑 Danh sách review</h3>
+      <ul id="reviewList" class="space-y-3"></ul>
+    </aside>
+
+    <!-- Nội dung chính -->
+    <section id="reviewContent" class="flex-1 bg-white p-6 rounded-lg shadow-sm">
+      <p>Đang tải dữ liệu...</p>
+    </section>
+
+    <!-- Sidebar phải -->
+    <aside class="w-[18%] bg-gray-50 p-4 border rounded-lg">
+      <h3 class="text-sm font-semibold mb-4">💡 Sản phẩm liên quan</h3>
+      <ul id="relatedProducts" class="space-y-3"></ul>
+    </aside>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-12 mt-8">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-2xl font-bold text-orange-500 mb-2">PickChuẩn</h2>
+      <p class="text-gray-400">© 2025 PickChuẩn. Tất cả quyền được bảo lưu.</p>
+    </div>
+  </footer>
+
+  <!-- Script -->
+  <script>
+    const API_BASE = "https://script.google.com/macros/s/AKfycbxnVUqnwEfy0OKF9kaaFscKdwpBC7U7J_OBw8_zgjDGPr94TIx0yX9JxrOUmjYLHXs/exec"; // 🔥 thay API link Apps Script
+
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get("id");
+
+    async function fetchProductDetail(id) {
+      const res = await fetch(`${API_BASE}?type=detail&id=${id}`);
+      return res.json();
+    }
+
+    async function fetchAllReviews() {
+      const res = await fetch(`${API_BASE}?type=list`);
+      return res.json();
+    }
+
+    function renderReviewList(reviews) {
+      const ul = document.getElementById("reviewList");
+      ul.innerHTML = reviews.map(r => `
+        <li>
+          <a href="review.html?id=${r.id}" 
+            class="block bg-white rounded-lg shadow p-2 hover:shadow-lg transition">
+            <img src="${r.image}" class="w-full h-24 object-cover rounded mb-2"/>
+            <p class="text-xs font-medium text-gray-700 line-clamp-2">${r.title}</p>
+          </a>
+        </li>
+      `).join("");
+    }
+
+    function renderProduct(product) {
+      const el = document.getElementById("reviewContent");
+      el.innerHTML = `
+        <h1 class="text-3xl font-bold mb-4">${product.title}</h1>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
+          ${product.images.map(img => `
+            <img src="${img}" alt="Ảnh" class="rounded-lg border object-cover"/>
+          `).join("")}
+        </div>
+
+        <h2 class="text-xl font-semibold mb-2">📄 Giới thiệu</h2>
+        <div class="prose mb-6">${product.gioithieu || ""}</div>
+
+        <h2 class="text-xl font-semibold mb-2">📊 Thông số kỹ thuật</h2>
+        <div class="prose mb-6">${product.thongso || ""}</div>
+
+        <h2 class="text-xl font-semibold mb-2">🎯 Trải nghiệm thực tế</h2>
+        <div class="prose mb-6">${product.trainghiem || ""}</div>
+
+        <h2 class="text-xl font-semibold mb-2">✅ Ưu điểm</h2>
+        <div class="prose mb-6">${product.uudiem || ""}</div>
+
+        <h2 class="text-xl font-semibold mb-2">❌ Nhược điểm</h2>
+        <div class="prose mb-6">${product.nhuocdiem || ""}</div>
+
+        <h2 class="text-xl font-semibold mb-2">🏁 Kết luận</h2>
+        <div class="prose mb-6">${product.ketluan || ""}</div>
+
+        <!-- Feedback -->
+        <section class="mb-6">
+          <h2 class="text-xl font-semibold mb-2">📌 Phản hồi người dùng</h2>
+          <div id="feedbackList" class="space-y-3"></div>
+
+          <h3 class="text-lg font-semibold mb-2">✍️ Thêm bình luận</h3>
+          <input id="newName" placeholder="Tên của bạn" class="border p-2 rounded w-full mb-2"/>
+          <textarea id="newComment" placeholder="Nhập bình luận..." class="border p-2 rounded w-full mb-2"></textarea>
+          <select id="newRating" class="border p-2 rounded mb-2">
+            <option value="5">5 sao</option>
+            <option value="4">4 sao</option>
+            <option value="3">3 sao</option>
+            <option value="2">2 sao</option>
+            <option value="1">1 sao</option>
+          </select>
+          <button onclick="submitComment()" class="bg-blue-600 text-white px-4 py-2 rounded">Gửi bình luận</button>
+        </section>
+      `;
+
+      renderFeedback(product.feedback);
+    }
+
+    function renderFeedback(data) {
+      const box = document.getElementById("feedbackList");
+      if (!data) {
+        box.innerHTML = "<p class='text-gray-500'>Chưa có feedback.</p>";
+        return;
+      }
+
+      data.positive = data.positive || [];
+      data.negative = data.negative || [];
+
+      const html = `
+        ${renderGroup("👍 Feedback tích cực", data.positive)}
+        ${renderGroup("⚠️ Feedback tiêu cực", data.negative)}
+      `;
+      box.innerHTML = html;
+    }
+
+    function renderGroup(title, list) {
+      if (!list.length) return "";
+      return `
+        <h3 class="font-semibold">${title}</h3>
+        <ul>
+          ${list.map(f => `
+            <li class="border rounded p-2 mb-2 bg-gray-50">
+              <div class="font-medium">${f.name || "Ẩn danh"}</div>
+              <div>${f.comment || ""}</div>
+              <div class="text-yellow-500">Đánh giá: ${"⭐".repeat(f.rating || 0)}</div>
+            </li>
+          `).join("")}
+        </ul>
+      `;
+    }
+
+    function submitComment() {
+      const name = document.getElementById("newName").value.trim() || "Ẩn danh";
+      const comment = document.getElementById("newComment").value.trim();
+      const rating = parseInt(document.getElementById("newRating").value);
+
+      if (!comment) {
+        alert("Vui lòng nhập bình luận!");
+        return;
+      }
+
+      const li = `
+        <li class="border rounded p-2 mb-2 bg-white shadow">
+          <div class="font-medium">${name}</div>
+          <div>${comment}</div>
+          <div class="text-yellow-500">Đánh giá: ${"⭐".repeat(rating)}</div>
+        </li>
+      `;
+
+      document.getElementById("feedbackList").insertAdjacentHTML("beforeend", li);
+      document.getElementById("newName").value = "";
+      document.getElementById("newComment").value = "";
+      document.getElementById("newRating").value = "5";
+    }
+
+    // Search suggestions
+    function setupSearch(reviews) {
+      const input = document.getElementById("searchInput");
+      const box = document.getElementById("suggestions");
+
+      input.addEventListener("input", () => {
+        const q = input.value.toLowerCase();
+        if (!q) { box.classList.add("hidden"); return; }
+
+        const matches = reviews.filter(r => r.title.toLowerCase().includes(q)).slice(0, 8);
+        if (!matches.length) {
+          box.innerHTML = "<div class='p-2 text-gray-500'>Không tìm thấy</div>";
+        } else {
+          box.innerHTML = matches.map(r => `
+            <div class="p-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2" onclick="location.href='review.html?id=${r.id}'">
+              <img src="${r.image}" class="w-8 h-8 object-cover rounded"/> 
+              <span>${r.title}</span>
+            </div>
+          `).join("");
+        }
+        box.classList.remove("hidden");
+      });
+
+      document.addEventListener("click", e => {
+        if (!e.target.closest("#searchInput") && !e.target.closest("#suggestions")) {
+          box.classList.add("hidden");
+        }
+      });
+    }
+
+    // Run
+    (async () => {
+      const [reviews, product] = await Promise.all([
+        fetchAllReviews(),
+        fetchProductDetail(productId)
+      ]);
+      renderReviewList(reviews);
+      renderProduct(product);
+      setupSearch(reviews);
+    })();
+  </script>
+</body>
+</html>
