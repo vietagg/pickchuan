@@ -68,7 +68,7 @@
     const productId = params.get("id");
 
     async function fetchProductDetail(id) {
-      const res = await fetch(`${API_BASE}?type=detail&id=${id}`);
+      const res = await fetch(`${API_BASE}?api=detail&id=${id}`);
       return res.json();
     }
 
