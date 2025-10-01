@@ -62,7 +62,7 @@ body {
   display: flex;
   justify-content: center;
   height: 250px;
-  gap: 15px;
+  gap: 1px;
 }
 
 .review-images .card {
