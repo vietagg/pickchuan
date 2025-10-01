@@ -71,9 +71,9 @@ body {
   overflow: hidden;
   border-radius: 10px;
   cursor: pointer;
-  border: 1px solid #ddd;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* thay border bằng shadow */
   transition: all 0.4s ease;
-  flex: 0 0 80px; /* mặc định nhỏ */
+  flex: 0 0 80px;
 }
 
 .review-images .card img {
