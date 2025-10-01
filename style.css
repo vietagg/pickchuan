@@ -62,8 +62,8 @@ body {
   width: 100%;
   display: flex;
   justify-content: center;
-  height: 250px;
-  gap: 15px;
+  height: 275px;
+  gap: 5px;
 }
 
 .review-images .card {

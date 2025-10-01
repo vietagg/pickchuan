@@ -97,7 +97,7 @@
         <div class="review-images">
           ${product.images.map((img, i) => `
             <div class="card ${i === 0 ? 'active' : ''}">
-              <img src="${img}" alt="Ảnh sản phẩm ${i+1}" />
+              <img src="${img}" alt="Ảnh sản phẩm ${i+1}" class="rounded-lg object-cover"/>
             </div>
           `).join("")}
         </div>
