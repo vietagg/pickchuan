@@ -58,13 +58,44 @@ body {
 .section-content tr:nth-child(even) td { background: #fafafa; }
 
 /* Review images */
-.review-images { display:flex; justify-content:center; height:250px; gap:15px; }
-.review-images .card { position:relative; overflow:hidden; border-radius:10px; cursor:pointer; border:1px solid #ddd; transition:all 0.4s ease; flex:0 0 80px; }
-.review-images .card img { width:100%; height:100%; object-fit:cover; }
-.review-images .card.active { flex:0 0 300px; }
-.review-images:hover .card.active { flex:0 0 80px; }
-.review-images:hover .card:hover { flex:0 0 300px; }
+.review-images {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 250px;
+  gap: 15px;
+}
 
+.review-images .card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  transition: all 0.4s ease;
+  flex: 0 0 80px; /* mặc định nhỏ */
+}
+
+.review-images .card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Ảnh đầu tiên to mặc định */
+.review-images .card.active {
+  flex: 0 0 300px;
+}
+
+/* Khi hover container, bỏ to mặc định */
+.review-images:hover .card.active {
+  flex: 0 0 80px;
+}
+
+/* Ảnh nào được hover sẽ to */
+.review-images:hover .card:hover {
+  flex: 0 0 300px;
+}
 /* Main layout */
 .review-main { max-width:1200px; margin:0 auto; padding:20px; background:#f9fafb; border-radius:12px; display:flex; gap:20px; }
 .review-main .sidebar { flex:1; }

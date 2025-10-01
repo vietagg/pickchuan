@@ -94,9 +94,11 @@
       const el = document.getElementById("reviewContent");
       el.innerHTML = `
         <h1 class="text-3xl font-bold mb-4">${product.title}</h1>
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
-          ${product.images.map(img => `
-            <img src="${img}" alt="Ảnh" class="rounded-lg border object-cover"/>
+        <div class="review-images">
+          ${product.images.map((img, i) => `
+            <div class="card ${i === 0 ? 'active' : ''}">
+              <img src="${img}" alt="Ảnh sản phẩm ${i+1}" />
+            </div>
           `).join("")}
         </div>
 
