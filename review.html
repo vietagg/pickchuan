@@ -73,7 +73,7 @@
     }
 
     async function fetchAllReviews() {
-      const res = await fetch(`${API_BASE}?type=list`);
+      const res = await fetch(`${API_BASE}?api=list`);
       return res.json();
     }
 
