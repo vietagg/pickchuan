@@ -57,23 +57,22 @@ body {
 .section-content tr:last-child td { border-bottom: none; }
 .section-content tr:nth-child(even) td { background: #fafafa; }
 
-/* Review images */
 .review-images {
   width: 100%;
   display: flex;
   justify-content: center;
-  height: 275px;
-  gap: 5px;
+  height: 250px;
+  gap: 15px;
 }
 
 .review-images .card {
   position: relative;
   overflow: hidden;
-  border-radius: 1px;
+  border-radius: 10px; /* bo góc */
   cursor: pointer;
-
   transition: all 0.4s ease;
-  flex: 0 0 80px;
+  flex: 0 0 80px; /* mặc định nhỏ */
+  border: none; /* ❌ bỏ viền */
 }
 
 .review-images .card img {
@@ -96,6 +95,7 @@ body {
 .review-images:hover .card:hover {
   flex: 0 0 300px;
 }
+
 /* Main layout */
 .review-main { max-width:1200px; margin:0 auto; padding:20px; background:#f9fafb; border-radius:12px; display:flex; gap:20px; }
 .review-main .sidebar { flex:1; }
