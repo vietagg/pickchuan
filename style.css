@@ -71,7 +71,7 @@ body {
   border-radius: 10px; /* bo góc */
   cursor: pointer;
   transition: all 0.4s ease;
-  flex: 0 0 80px; /* mặc định nhỏ */
+  flex: 0 0 100px; /* mặc định nhỏ */
   border: none; /* ❌ bỏ viền */
 }
 
@@ -88,7 +88,7 @@ body {
 
 /* Khi hover container, bỏ to mặc định */
 .review-images:hover .card.active {
-  flex: 0 0 80px;
+  flex: 0 0 100px;
 }
 
 /* Ảnh nào được hover sẽ to */
