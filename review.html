@@ -96,11 +96,17 @@
         <h1 class="text-3xl font-bold mb-4">${product.title}</h1>
         <h2 class="text-xl font-semibold mb-2">📌 Hình ảnh sản phẩm</h2>
         <div class="review-images">
-          ${product.images.map((img, i) => `
-            <div class="card ${i === 0 ? 'active' : ''}">
-              <img src="${img}" alt="Ảnh sản phẩm ${i+1}" class="rounded-lg object-cover"/>
-            </div>
-          `).join("")}
+          ${(product.images && product.images.length > 0
+            ? product.images.map((img, i) => `
+                <div class="card ${i === 0 ? 'active' : ''}">
+                  <img src="${img}" alt="Ảnh sản phẩm ${i+1}" class="rounded-lg object-cover"/>
+                </div>
+              `).join("")
+            : `<div class="card active">
+                <img src="https://via.placeholder.com/600x400?text=No+Image" 
+                      alt="Không có ảnh" class="rounded-lg object-cover"/>
+              </div>`
+          )}
         </div>
         <h2 class="text-xl font-semibold mb-4">📌 Bài viết</h2>
         <section class="mb-4">
