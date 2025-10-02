@@ -62,7 +62,7 @@
 
   <!-- Script -->
   <script>
-    const API_BASE = "https://script.google.com/macros/s/AKfycbyib3qvyC0JB_s4eXzcAjDb6GrhNNjModuN0TSuu904LO2_Jb1EShV0Hn1wUULCFrql/exec"; // 🔥 thay API link Apps Script
+    const API_BASE = "https://script.google.com/macros/s/AKfycbycoCEHBrvu2tmSr0acV_t_5V6xkCi03t0X8m5CrBr8araknjmjV3VEXt7yNYOZ4OSk/exec"; // 🔥 thay API link Apps Script
 
     const params = new URLSearchParams(window.location.search);
     const productId = params.get("id");
@@ -92,21 +92,24 @@
 
     function renderProduct(product) {
       const el = document.getElementById("reviewContent");
+      const images = Array.isArray(product.images) ? product.images : [];
+
       el.innerHTML = `
         <h1 class="text-3xl font-bold mb-4">${product.title}</h1>
         <h2 class="text-xl font-semibold mb-2">📌 Hình ảnh sản phẩm</h2>
         <div class="review-images">
-          ${(product.images && product.images.length > 0
-            ? product.images.map((img, i) => `
+          ${images.length > 0
+            ? images.map((img, i) => `
                 <div class="card ${i === 0 ? 'active' : ''}">
                   <img src="${img}" alt="Ảnh sản phẩm ${i+1}" class="rounded-lg object-cover"/>
                 </div>
               `).join("")
-            : `<div class="card active">
+            : `
+              <div class="card active">
                 <img src="https://via.placeholder.com/600x400?text=No+Image" 
-                      alt="Không có ảnh" class="rounded-lg object-cover"/>
-              </div>`
-          )}
+                    alt="Không có ảnh" class="rounded-lg object-cover"/>
+              </div>
+            `}
         </div>
         <h2 class="text-xl font-semibold mb-4">📌 Bài viết</h2>
         <section class="mb-4">
@@ -165,29 +168,29 @@
         </section>
         
         <section class="mb-4">
-          <h2 class="section-title">🛒 Nơi bán</h2>
-          <div class="section-content">
-            <div class="flex gap-6 mt-3">
-              <!-- Shopee -->
-              <a href="${product.link.shopee ||""}" target="_blank" class="transition transform hover:scale-110">
-                <img src="https://drive.google.com/thumbnail?id=1qEFq9Y9N2y-vuYfA7EwpfbuFu3ibY02E" 
-                    alt="Shopee" style="width:100px;height:100px;object-fit:contain;">
-              </a>
+        <h2 class="section-title">🛒 Nơi bán</h2>
+        <div class="section-content">
+          <div class="flex gap-6 mt-3">
+            <!-- Shopee -->
+            <a href="${product.link?.shopee || ""}" target="_blank" class="transition transform hover:scale-110">
+              <img src="https://drive.google.com/thumbnail?id=1qEFq9Y9N2y-vuYfA7EwpfbuFu3ibY02E" 
+                  alt="Shopee" style="width:100px;height:100px;object-fit:contain;">
+            </a>
 
-              <!-- Lazada -->
-              <a href="${product.link.lazada || ""}" target="_blank" class="transition transform hover:scale-110">
-                <img src="https://drive.google.com/thumbnail?id=1Q_TuaZAAfGFZsOdvoO3ruMUe1eAElod3" 
-                    alt="Lazada" style="width:100px;height:100px;object-fit:contain;">
-              </a>
+            <!-- Lazada -->
+            <a href="${product.link?.lazada || ""}" target="_blank" class="transition transform hover:scale-110">
+              <img src="https://drive.google.com/thumbnail?id=1Q_TuaZAAfGFZsOdvoO3ruMUe1eAElod3" 
+                  alt="Lazada" style="width:100px;height:100px;object-fit:contain;">
+            </a>
 
-              <!-- TikTok Shop -->
-              <a href="${product.link.tiktok || ""}" target="_blank" class="transition transform hover:scale-110">
-                <img src="https://drive.google.com/thumbnail?id=1KPH2_VMy5H5hY6-ySLcEOCDcgNZ2uiGx" 
-                    alt="TikTok Shop" style="width:100px;height:100px;object-fit:contain;">
-              </a>
-            </div>
+            <!-- TikTok Shop -->
+            <a href="${product.link?.tiktok || ""}" target="_blank" class="transition transform hover:scale-110">
+              <img src="https://drive.google.com/thumbnail?id=1KPH2_VMy5H5hY6-ySLcEOCDcgNZ2uiGx" 
+                  alt="TikTok Shop" style="width:100px;height:100px;object-fit:contain;">
+            </a>
           </div>
-        </section>
+        </div>
+      </section>
 
         <!-- Feedback -->
         <section class="mb-6">
@@ -227,6 +230,7 @@
       `;
       box.innerHTML = html;
     }
+
 
     function renderGroup(title, list) {
       if (!list.length) return "";

@@ -44,36 +44,40 @@ body {
   margin-top:4px;
 }
 /* Hình ảnh */
-.section-content table {
-  width: 100%;
-  border-collapse: collapse; /* gộp viền */
-  margin-top: 10px;
-  background: #fff;
-  border-radius: 8px;
-  overflow: hidden; /* bo góc cho bảng */
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-}
-
-.section-content th {
-  background: #f3f4f6;  /* nền xám nhạt */
+.section-content table th {
+  background: #f3f4f6;
   font-weight: 600;
   text-align: left;
   padding: 10px 12px;
   border-bottom: 2px solid #e5e7eb;
 }
 
-.section-content td {
+.section-content table td {
   padding: 10px 12px;
   border-bottom: 1px solid #e5e7eb;
 }
 
-.section-content tr:last-child td {
-  border-bottom: none; /* bỏ viền hàng cuối */
+.section-content table tr:last-child td {
+  border-bottom: none;
 }
 
-.section-content tr:nth-child(even) td {
-  background: #fafafa; /* sọc nền */
+.section-content table tr:nth-child(even) td {
+  background: #fafafa;
 }
+.section-content p,
+.section-content ul,
+.section-content li {
+  color: #111827;  /* text-gray-900 */
+  font-size: 1rem; /* 16px */
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+
+.section-content ul {
+  list-style: disc inside;
+  padding-left: 1rem;
+}
+
 
 .review-images {
   width: 100%;
