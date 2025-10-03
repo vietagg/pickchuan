@@ -176,3 +176,48 @@ p { color:rgb(107,114,128); font-size:15px; margin-bottom:10px; margin-top:5px; 
 /* Card */
 .card { max-width:620px; margin:0 auto; padding:16px; border:1px solid lightgray; border-radius:16px; }
 .card p:last-child { margin-bottom:0; }
+/* input text + placeholder */
+#searchInput {
+  color: #111827;              /* text */
+  background: #fff;            /* nền */
+}
+#searchInput::placeholder {
+  color: #9CA3AF;              /* placeholder */
+  opacity: 1;
+}
+
+/* override khi extension / parent CSS ép màu trắng */
+#searchInput, #searchInput * {
+  color: #111827 !important;
+}
+
+/* suggestions box + items */
+#suggestions {
+  background: #fff;
+  color: #111827;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  max-height: 300px;
+  overflow-y: auto;
+}
+#suggestions .suggestion-item,
+#suggestions > div {
+  color: #111827;
+  background: #fff;
+}
+#suggestions .suggestion-item:hover {
+  background: #f3f4f6;
+}
+
+/* Autofill (Chrome) */
+input:-webkit-autofill,
+textarea:-webkit-autofill {
+  -webkit-text-fill-color: #111827 !important;
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+}
+
+/* Nếu parent có text-white bạn có thể override cho vùng header/search */
+header, .container, .review-main {
+  color: inherit;
+}
