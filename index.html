@@ -138,7 +138,7 @@
         products = await res.json();
         render();
       }
-
+      
       function render() {
         const keyword = document.getElementById("searchInput").value.toLowerCase();
         const filtered = products.filter(p => p.title.toLowerCase().includes(keyword));
