@@ -318,28 +318,29 @@
     }
 
     function submitComment() {
-      const name = document.getElementById("newName").value.trim() || "Ẩn danh";
-      const comment = document.getElementById("newComment").value.trim();
-      const rating = parseInt(document.getElementById("newRating").value);
+  const name = document.getElementById("newName").value.trim() || "Ẩn danh";
+  const comment = document.getElementById("newComment").value.trim();
+  const rating = parseInt(document.getElementById("newRating").value);
 
-      if (!comment) {
-        alert("Vui lòng nhập bình luận!");
-        return;
-      }
+  if (!comment) {
+    alert("Vui lòng nhập bình luận!");
+    return;
+  }
 
-      const li = `
-        <li class="border rounded p-2 mb-2 bg-white shadow">
-          <div class="font-medium">${name}</div>
-          <div>${comment}</div>
-          <div class="text-yellow-500">Đánh giá: ${"⭐".repeat(rating)}</div>
-        </li>
-      `;
+  const li = `
+    <li class="border rounded p-2 mb-2 bg-white shadow">
+      <div class="font-medium">${name}</div>
+      <div>${comment}</div>
+      <div class="text-yellow-500">Đánh giá: ${"⭐".repeat(rating)}</div>
+    </li>
+  `;
+  document.getElementById("feedbackList").insertAdjacentHTML("beforeend", li);
 
-      document.getElementById("feedbackList").insertAdjacentHTML("beforeend", li);
-      document.getElementById("newName").value = "";
-      document.getElementById("newComment").value = "";
-      document.getElementById("newRating").value = "5";
-    }
+  // Reset form
+  document.getElementById("newName").value = "";
+  document.getElementById("newComment").value = "";
+  document.getElementById("newRating").value = "5";
+}
 
     // Search suggestions
     function setupSearch(reviews) {
@@ -382,54 +383,7 @@
       renderProduct(product);
       setupSearch(reviews);
     })();
-    async function submitComment() {
-  const name = document.getElementById("newName").value.trim() || "Ẩn danh";
-  const comment = document.getElementById("newComment").value.trim();
-  const rating = parseInt(document.getElementById("newRating").value);
-  const productId = new URLSearchParams(window.location.search).get("id");
-
-  if (!comment) {
-    alert("Vui lòng nhập bình luận!");
-    return;
-  }
-
-  if (!productId) {
-    alert("❌ Không xác định được ID sản phẩm!");
-    return;
-  }
-
-  try {
-    const response = await fetch("https://script.google.com/macros/s/AKfycbzG_miiQM7LBKtzN1smQevZ_62LLVwkkz7dOLD-UqN1600TJLBigJ4T88NV6mKNE7T4/exec", {
-      method: "POST",
-      body: JSON.stringify({ productId, name, comment, rating }),
-      headers: { "Content-Type": "application/json" }
-    });
-
-    const result = await response.json();
-    if (!result.success) {
-      alert("❌ Lỗi lưu feedback: " + result.error);
-      return;
-    }
-
-    // Nếu thành công thì append luôn vào UI
-    const li = `
-      <li class="border rounded p-2 mb-2 bg-white shadow">
-        <div class="font-medium">${name}</div>
-        <div>${comment}</div>
-        <div class="text-yellow-500">Đánh giá: ${"⭐".repeat(rating)}</div>
-      </li>
-    `;
-    document.getElementById("feedbackList").insertAdjacentHTML("beforeend", li);
-
-    // Reset form
-    document.getElementById("newName").value = "";
-    document.getElementById("newComment").value = "";
-    document.getElementById("newRating").value = "5";
-
-  } catch (err) {
-    alert("❌ Không kết nối được server: " + err.message);
-  }
-}
+    
   </script>
 </body>
 </html>
