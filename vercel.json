@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/review/:id",
+      "destination": "/review.html"
+    },
+    {
+      "source": "/:path*",
+      "destination": "/index.html"
+    }
+  ]
+}

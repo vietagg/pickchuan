@@ -127,7 +127,7 @@
 
     <script>
       // 👉 THAY bằng URL Web App Apps Script sau khi deploy (Publish > Deploy as Web App)
-      const API_URL = "https://script.google.com/macros/s/AKfycbzG_miiQM7LBKtzN1smQevZ_62LLVwkkz7dOLD-UqN1600TJLBigJ4T88NV6mKNE7T4/exec";
+      const API_URL = "https://script.google.com/macros/s/AKfycbxr-ULaNINjbEmgiizeQlREF92FvGYSadPBEhprCuwgtz4Dc8fjmPolUOPfqXiu94YX/exec";
 
       const itemsPerPage = 4;
       let products = [];
@@ -218,7 +218,19 @@
         document.getElementById("suggestions").classList.add("hidden");
         render();
       }
-
+      async function fetchData() {
+        const cacheKey = 'products';
+        const cached = localStorage.getItem(cacheKey);
+        if (cached) {
+          products = JSON.parse(cached);
+          render();
+          return;
+        }
+        const res = await fetch(API_URL + "?api=list");
+        products = await res.json();
+        localStorage.setItem(cacheKey, JSON.stringify(products));
+        render();
+      }
       fetchData();
     </script>
   </body>

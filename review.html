@@ -111,20 +111,30 @@
 </footer>
   <!-- Script -->
   <script>
-    const API_BASE = "https://script.google.com/macros/s/AKfycbzG_miiQM7LBKtzN1smQevZ_62LLVwkkz7dOLD-UqN1600TJLBigJ4T88NV6mKNE7T4/exec"; // 🔥 thay API link Apps Script
+    const API_BASE = "https://script.google.com/macros/s/AKfycbxr-ULaNINjbEmgiizeQlREF92FvGYSadPBEhprCuwgtz4Dc8fjmPolUOPfqXiu94YX/exec"; // 🔥 thay API link Apps Script
 
     const params = new URLSearchParams(window.location.search);
     const productId = params.get("id");
-
     async function fetchProductDetail(id) {
-      const res = await fetch(`${API_BASE}?api=detail&id=${id}`);
-      return res.json();
-    }
+    const cacheKey = `product_${id}`;
+    const cached = localStorage.getItem(cacheKey);
+    if (cached) return JSON.parse(cached);
+    const res = await fetch(`${API_BASE}?api=detail&id=${id}`); // Thay bằng URL API thật
+    const data = await res.json();
+    localStorage.setItem(cacheKey, JSON.stringify(data));
+    return data;
+  }
 
-    async function fetchAllReviews() {
-      const res = await fetch(`${API_BASE}?api=list`);
-      return res.json();
-    }
+  async function fetchAllReviews() {
+    const cacheKey = 'reviews';
+    const cached = localStorage.getItem(cacheKey);
+    if (cached) return JSON.parse(cached);
+    const res = await fetch(`${API_BASE}?api=list`); // Thay bằng URL API thật
+    const data = await res.json();
+    localStorage.setItem(cacheKey, JSON.stringify(data));
+    return data;
+  }
+    
 
     function renderReviewList(reviews) {
       const ul = document.getElementById("reviewList");
