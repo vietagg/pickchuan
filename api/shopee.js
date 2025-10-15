@@ -8,7 +8,7 @@ module.exports = async (req, res) => {
   try {
     const { link, limit } = req.body;
     const response = await fetch(
-      "https://script.google.com/macros/s/AKfycbzG_miiQM7LBKtzN1smQevZ_62LLVwkkz7dOLD-UqN1600TJLBigJ4T88NV6mKNE7T4/exec",
+      "https://script.google.com/macros/s/AKfycbxr-ULaNINjbEmgiizeQlREF92FvGYSadPBEhprCuwgtz4Dc8fjmPolUOPfqXiu94YX/exec",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
