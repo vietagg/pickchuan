@@ -85,16 +85,17 @@ body {
   justify-content: center;
   height: 270px;
   gap: 1px;
+  overflow: hidden; /* desktop không scroll */
 }
 
 .review-images .card {
   position: relative;
   overflow: hidden;
-  border-radius: 10px; /* bo góc */
+  border-radius: 10px;
   cursor: pointer;
   transition: all 0.4s ease;
-  flex: 0 0 100px; /* mặc định nhỏ */
-  border: none; /* ❌ bỏ viền */
+  flex: 0 0 100px;
+  border: none;
 }
 
 .review-images .card img {
@@ -108,15 +109,46 @@ body {
   flex: 0 0 300px;
 }
 
-/* Khi hover container, bỏ to mặc định */
+/* Hover trên desktop */
 .review-images:hover .card.active {
   flex: 0 0 100px;
 }
-
-/* Ảnh nào được hover sẽ to */
 .review-images:hover .card:hover {
   flex: 0 0 300px;
 }
+
+/* 👇 Responsive cho điện thoại */
+@media (max-width: 768px) {
+  .review-images {
+    overflow-x: auto;          /* Cho phép vuốt ngang */
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch; /* mượt trên iOS */
+    scroll-snap-type: x mandatory;     /* căn khung ảnh */
+    gap: 8px;
+    height: auto;              /* tự động co giãn */
+    padding-bottom: 8px;
+  }
+
+  .review-images .card {
+    flex: 0 0 80%;             /* mỗi ảnh chiếm khoảng 80% chiều rộng màn hình */
+    scroll-snap-align: center; /* khi vuốt, dừng giữa màn hình */
+    height: auto;
+    transition: none;          /* tắt hiệu ứng hover để không giật */
+  }
+
+  .review-images .card img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;       /* giữ tỉ lệ ảnh */
+  }
+
+  /* Tắt hiệu ứng hover trên mobile */
+  .review-images:hover .card:hover,
+  .review-images:hover .card.active {
+    flex: 0 0 80%;
+  }
+}
+
 
 /* Main layout */
 .review-main { max-width:1200px; margin:0 auto; padding:20px; background:#f9fafb; border-radius:12px; display:flex; gap:20px; }
