@@ -117,29 +117,46 @@ body {
   flex: 0 0 300px;
 }
 
-/* 👇 Responsive cho điện thoại */
+/* Ẩn scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Hiệu ứng trượt xuống mượt */
+#mobileMenu, #mobileSearchBox {
+  transition: all 0.3s ease;
+}
+#mobileMenu.show, #mobileSearchBox.show {
+  display: block;
+}
+
+/* 👇 Responsive: CHỈ ÁP DỤNG CHO MOBILE */
 @media (max-width: 768px) {
   .review-images {
-    overflow-x: auto;          /* Cho phép vuốt ngang */
+    overflow-x: auto;
     overflow-y: hidden;
-    -webkit-overflow-scrolling: touch; /* mượt trên iOS */
-    scroll-snap-type: x mandatory;     /* căn khung ảnh */
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
     gap: 8px;
-    height: auto;              /* tự động co giãn */
+    height: auto;
     padding-bottom: 8px;
   }
 
   .review-images .card {
-    flex: 0 0 80%;             /* mỗi ảnh chiếm khoảng 80% chiều rộng màn hình */
-    scroll-snap-align: center; /* khi vuốt, dừng giữa màn hình */
+    flex: 0 0 80%;
+    scroll-snap-align: center;
     height: auto;
-    transition: none;          /* tắt hiệu ứng hover để không giật */
+    transition: none;
   }
 
   .review-images .card img {
     width: 100%;
     height: auto;
-    object-fit: contain;       /* giữ tỉ lệ ảnh */
+    object-fit: contain;
   }
 
   /* Tắt hiệu ứng hover trên mobile */
@@ -148,7 +165,6 @@ body {
     flex: 0 0 80%;
   }
 }
-
 
 /* Main layout */
 .review-main { max-width:1200px; margin:0 auto; padding:20px; background:#f9fafb; border-radius:12px; display:flex; gap:20px; }

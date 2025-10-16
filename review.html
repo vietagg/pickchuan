@@ -12,25 +12,57 @@
 <body class="bg-gray-50 font-[Inter]">
 
   <!-- Header -->
-  <header class="bg-white shadow-sm sticky top-0 z-50">
-    <div class="container mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between">
-      <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-500 to-orange-500 bg-clip-text text-transparent">PickChuẩn</h1>
-      <nav class="hidden md:block">
-        <ul class="flex space-x-6">
-          <li><a href="index.html" class="text-blue-600 font-medium hover:text-orange-500 transition">Trang chủ</a></li>
-          <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Review</a></li>
-          <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Bảng xếp hạng</a></li>
-          <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Blog</a></li>
-          <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Liên hệ</a></li>
-        </ul>
-      </nav>
-      <div class="hidden md:flex items-center ml-4 relative">
-        <input id="searchInput" type="text" placeholder="Tìm sản phẩm..."
-          class="w-64 border border-gray-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"/>
-        <div id="suggestions" class="hidden absolute top-full left-0 right-0 mt-1 bg-white border rounded-md shadow z-50"></div>
-      </div>
+<header class="bg-white shadow-sm sticky top-0 z-50">
+  <div class="container mx-auto px-4 py-3 flex items-center justify-between relative">
+    <!-- Logo -->
+    <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-500 to-orange-500 bg-clip-text text-transparent">
+      PickChuẩn
+    </h1>
+
+    <!-- Mobile buttons -->
+    <div class="flex items-center gap-3 md:hidden">
+      <button id="mobileSearchBtn" class="text-gray-600 hover:text-orange-500 text-xl">🔍</button>
+      <button id="menuToggle" class="text-gray-600 hover:text-orange-500 text-2xl">☰</button>
     </div>
-  </header>
+
+    <!-- Desktop menu -->
+    <nav id="mainMenu" class="hidden md:block">
+      <ul class="flex space-x-6">
+        <li><a href="index.html" class="text-blue-600 font-medium hover:text-orange-500 transition">Trang chủ</a></li>
+        <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Review</a></li>
+        <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Bảng xếp hạng</a></li>
+        <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Blog</a></li>
+        <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Liên hệ</a></li>
+      </ul>
+    </nav>
+
+    <!-- Desktop search -->
+    <div class="hidden md:flex items-center ml-4 relative">
+      <input id="searchInput" type="text" placeholder="Tìm sản phẩm..."
+        class="w-64 border border-gray-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"/>
+      <div id="suggestions" class="hidden absolute top-full left-0 right-0 mt-1 bg-white border rounded-md shadow z-50"></div>
+    </div>
+  </div>
+
+  <!-- Mobile search box -->
+  <div id="mobileSearchBox" class="hidden px-4 pb-3 bg-white border-t relative">
+    <input id="searchInputMobile" type="text" placeholder="Tìm sản phẩm..."
+      class="w-full border border-gray-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"/>
+    <div id="suggestionsMobile" class="hidden absolute left-4 right-4 bg-white border rounded-md shadow mt-1 z-50"></div>
+  </div>
+
+  <!-- Mobile menu (ngang) -->
+  <div id="mobileMenu" class="hidden bg-white border-t shadow-inner overflow-x-auto whitespace-nowrap no-scrollbar">
+    <ul class="flex space-x-4 px-4 py-2 text-sm">
+      <li><a href="index.html" class="text-blue-600 font-medium hover:text-orange-500 transition">Trang chủ</a></li>
+      <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Review</a></li>
+      <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Bảng xếp hạng</a></li>
+      <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Blog</a></li>
+      <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Liên hệ</a></li>
+    </ul>
+  </div>
+</header>
+
 
   <!-- Main -->
   <main class="review-main flex max-w-7xl w-full mx-auto mt-6 gap-6">
@@ -119,7 +151,7 @@
     const cacheKey = `product_${id}`;
     const cached = localStorage.getItem(cacheKey);
     if (cached) return JSON.parse(cached);
-    const res = await fetch(`${API_BASE}?api=detail&id=${id}`); // Thay bằng URL API thật
+    const res = await fetch(`${API_BASE}?api=detail&id=${id}`); //URL API
     const data = await res.json();
     localStorage.setItem(cacheKey, JSON.stringify(data));
     return data;
@@ -129,7 +161,7 @@
     const cacheKey = 'reviews';
     const cached = localStorage.getItem(cacheKey);
     if (cached) return JSON.parse(cached);
-    const res = await fetch(`${API_BASE}?api=list`); // Thay bằng URL API thật
+    const res = await fetch(`${API_BASE}?api=list`); //URL API
     const data = await res.json();
     localStorage.setItem(cacheKey, JSON.stringify(data));
     return data;
@@ -154,8 +186,12 @@
       const images = Array.isArray(product.images) ? product.images : [];
 
       el.innerHTML = `
-        <h1 class="text-3xl font-bold mb-4">${product.title}</h1>
-        <h2 class="text-xl font-semibold mb-2">📌 Hình ảnh sản phẩm</h2>
+        <h2 class="text-lg text-xl sm:text-2xl md:text-3xl font-bold mb-4 break-words">
+          ${product.title}
+        </h2>
+        <h3 class="text-lg sm:text-xl md:text-2xl font-semibold mb-2">
+          📌 Hình ảnh sản phẩm
+        </h3>
         <div class="review-images">
           ${images.length > 0
             ? images.map((img, i) => `
@@ -170,7 +206,9 @@
               </div>
             `}
         </div>
-        <h2 class="text-xl font-semibold mb-4">📌 Bài viết</h2>
+        <h3 class="text-lg sm:text-xl md:text-2xl font-semibold mb-2">
+          📌 Bài viết
+        </h3>
         <section class="mb-4">
           <h2 class="section-title py-5">📄 Giới thiệu</h2>
           <div class="section-content">
@@ -273,7 +311,9 @@
 
         <!-- Feedback -->
         <section class="mb-6">
-          <h2 class="text-xl font-semibold mb-2">📌 Phản hồi người dùng</h2>
+          <h3 class="text-lg sm:text-xl md:text-2xl font-semibold mb-2">
+            📌 Phản hồi người dùng
+          </h3>
           <div id="feedbackList" class="space-y-3"></div>
 
           <h3 class="text-lg font-semibold mb-2">✍️ Thêm bình luận</h3>
@@ -351,24 +391,57 @@
   document.getElementById("newComment").value = "";
   document.getElementById("newRating").value = "5";
 }
-
     // Search suggestions
-    function setupSearch(reviews) {
-      const input = document.getElementById("searchInput");
-      const box = document.getElementById("suggestions");
+    const menuBtn = document.getElementById("menuToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const searchBtn = document.getElementById("mobileSearchBtn");
+    const mobileSearchBox = document.getElementById("mobileSearchBox");
+
+    // Toggle menu ngang
+      menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("show");
+      mobileSearchBox.classList.remove("show");
+    });
+
+    // Toggle ô tìm kiếm
+      searchBtn.addEventListener("click", () => {
+      mobileSearchBox.classList.toggle("show");
+      mobileMenu.classList.remove("show");
+    });
+
+    // Ẩn khi bấm ngoài
+      document.addEventListener("click", (e) => {
+      if (
+        !e.target.closest("#mobileMenu") &&
+        !e.target.closest("#menuToggle") &&
+        !e.target.closest("#mobileSearchBox") &&
+        !e.target.closest("#mobileSearchBtn")
+      ) {
+        mobileMenu.classList.remove("show");
+        mobileSearchBox.classList.remove("show");
+      }
+    });
+
+    // --- HÀM TÌM KIẾM DÙNG CHUNG CHO WEB & MOBILE ---
+      function setupSearch(reviews, inputId, suggestId) {
+      const input = document.getElementById(inputId);
+      const box = document.getElementById(suggestId);
 
       input.addEventListener("input", () => {
-        const q = input.value.toLowerCase();
-        if (!q) { box.classList.add("hidden"); return; }
+        const q = input.value.toLowerCase().trim();
+        if (!q) {
+          box.classList.add("hidden");
+          return;
+        }
 
         const matches = reviews.filter(r => r.title.toLowerCase().includes(q)).slice(0, 8);
         if (!matches.length) {
           box.innerHTML = "<div class='p-2 text-gray-500'>Không tìm thấy</div>";
         } else {
           box.innerHTML = matches.map(r => `
-            <div class="p-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2 bg-white text-gray-800 suggestion-item"
+            <div class="p-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2 bg-white text-gray-800"
                 onclick="location.href='review.html?id=${r.id}'">
-              <img src="${r.image}" class="w-8 h-8 object-cover rounded"/> 
+              <img src="${r.image}" class="w-8 h-8 object-cover rounded"/>
               <span class="text-sm font-medium text-gray-800">${r.title}</span>
             </div>
           `).join("");
@@ -376,14 +449,15 @@
         box.classList.remove("hidden");
       });
 
+      // Ẩn gợi ý khi click ra ngoài
       document.addEventListener("click", e => {
-        if (!e.target.closest("#searchInput") && !e.target.closest("#suggestions")) {
+        if (!e.target.closest(`#${inputId}`) && !e.target.closest(`#${suggestId}`)) {
           box.classList.add("hidden");
         }
       });
     }
 
-    // Run
+    // --- KHỞI CHẠY ---
     (async () => {
       const [reviews, product] = await Promise.all([
         fetchAllReviews(),
@@ -391,9 +465,11 @@
       ]);
       renderReviewList(reviews);
       renderProduct(product);
-      setupSearch(reviews);
+
+      // Gán tìm kiếm cho cả desktop và mobile
+      setupSearch(reviews, "searchInput", "suggestions");
+      setupSearch(reviews, "searchInputMobile", "suggestionsMobile");
     })();
-    
   </script>
 </body>
 </html>
