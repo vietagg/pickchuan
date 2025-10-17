@@ -29,7 +29,7 @@
     <nav id="mainMenu" class="hidden md:block">
       <ul class="flex space-x-6">
         <li><a href="index.html" class="text-blue-600 font-medium hover:text-orange-500 transition">Trang chủ</a></li>
-        <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Review</a></li>
+        <li><a href="review_list.html" class="text-gray-600 hover:text-orange-500 transition">Review</a></li>
         <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Bảng xếp hạng</a></li>
         <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Blog</a></li>
         <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Liên hệ</a></li>
@@ -55,7 +55,7 @@
   <div id="mobileMenu" class="hidden bg-white border-t shadow-inner overflow-x-auto whitespace-nowrap no-scrollbar">
     <ul class="flex space-x-4 px-4 py-2 text-sm">
       <li><a href="index.html" class="text-blue-600 font-medium hover:text-orange-500 transition">Trang chủ</a></li>
-      <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Review</a></li>
+      <li><a href="review_list.html" class="text-gray-600 hover:text-orange-500 transition">Review</a></li>
       <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Bảng xếp hạng</a></li>
       <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Blog</a></li>
       <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Liên hệ</a></li>
@@ -114,7 +114,7 @@
         <h3 class="text-lg font-semibold mb-4 border-b pb-2">Liên kết nhanh</h3>
         <ul class="space-y-2">
           <li><a href="#" class="text-gray-300 hover:text-white transition">Trang chủ</a></li>
-          <li><a href="#" class="text-gray-300 hover:text-white transition">Review</a></li>
+          <li><a href="review_list.html" class="text-gray-300 hover:text-white transition">Review</a></li>
           <li><a href="#" class="text-gray-300 hover:text-white transition">Blog</a></li>
           <li><a href="#" class="text-gray-300 hover:text-white transition">Liên hệ</a></li>
           <li><a href="#" class="text-gray-300 hover:text-white transition">Về chúng tôi</a></li>
@@ -147,27 +147,77 @@
 
     const params = new URLSearchParams(window.location.search);
     const productId = params.get("id");
-    async function fetchProductDetail(id) {
-    const cacheKey = `product_${id}`;
-    const cached = localStorage.getItem(cacheKey);
-    if (cached) return JSON.parse(cached);
-    const res = await fetch(`${API_BASE}?api=detail&id=${id}`); //URL API
-    const data = await res.json();
-    localStorage.setItem(cacheKey, JSON.stringify(data));
-    return data;
-  }
+    const CACHE_DURATION = 15 * 60 * 1000; // 15 phút
 
-  async function fetchAllReviews() {
-    const cacheKey = 'reviews';
-    const cached = localStorage.getItem(cacheKey);
-    if (cached) return JSON.parse(cached);
-    const res = await fetch(`${API_BASE}?api=list`); //URL API
-    const data = await res.json();
-    localStorage.setItem(cacheKey, JSON.stringify(data));
-    return data;
-  }
-    
+    async function fetchProductDetail(id, force = false) {
+      const cacheKey = `product_${id}`;
+      const cacheTimeKey = `${cacheKey}_time`;
+      const now = Date.now();
 
+      const cached = localStorage.getItem(cacheKey);
+      const cacheTime = Number(localStorage.getItem(cacheTimeKey));
+
+      // Nếu cache còn hạn và không ép buộc tải lại
+      if (!force && cached && cacheTime && now - cacheTime < CACHE_DURATION) {
+        console.log("📦 Dùng cache cho sản phẩm", id);
+        refreshProductDetail(id); // gọi ngầm để cập nhật sau
+        return JSON.parse(cached);
+      }
+
+      return await refreshProductDetail(id, true);
+    }
+
+    async function refreshProductDetail(id, show = false) {
+      try {
+        const res = await fetch(`${API_BASE}?api=detail&id=${id}`);
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        const data = await res.json();
+        const cacheKey = `product_${id}`;
+        const cacheTimeKey = `${cacheKey}_time`;
+        localStorage.setItem(cacheKey, JSON.stringify(data));
+        localStorage.setItem(cacheTimeKey, Date.now());
+        if (show) return data;
+      } catch (err) {
+        console.warn("⚠️ Lỗi tải chi tiết sản phẩm:", err);
+        const cached = localStorage.getItem(`product_${id}`);
+        if (cached) return JSON.parse(cached);
+        return null;
+      }
+    }
+
+    async function fetchAllReviews(force = false) {
+      const cacheKey = "reviews";
+      const cacheTimeKey = "reviews_time";
+      const now = Date.now();
+
+      const cached = localStorage.getItem(cacheKey);
+      const cacheTime = Number(localStorage.getItem(cacheTimeKey));
+
+      // Cache hợp lệ
+      if (!force && cached && cacheTime && now - cacheTime < CACHE_DURATION) {
+        console.log("📦 Dùng cache review list");
+        refreshAllReviews(); // cập nhật ngầm
+        return JSON.parse(cached);
+      }
+
+      return await refreshAllReviews(true);
+    }
+
+    async function refreshAllReviews(show = false) {
+      try {
+        const res = await fetch(`${API_BASE}?api=list`);
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        const data = await res.json();
+        localStorage.setItem("reviews", JSON.stringify(data));
+        localStorage.setItem("reviews_time", Date.now());
+        if (show) return data;
+      } catch (err) {
+        console.warn("⚠️ Lỗi tải review list:", err);
+        const cached = localStorage.getItem("reviews");
+        if (cached) return JSON.parse(cached);
+        return [];
+      }
+    }
     function renderReviewList(reviews) {
       const ul = document.getElementById("reviewList");
       ul.innerHTML = reviews.map(r => `
