@@ -1,0 +1,50 @@
+<header class="bg-white shadow-sm sticky top-0 z-50">
+  <div class="container mx-auto px-4 py-3 flex items-center justify-between relative">
+    <!-- Logo -->
+    <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-500 to-orange-500 bg-clip-text text-transparent">
+      PickChuẩn
+    </h1>
+
+    <!-- Mobile buttons -->
+    <div class="flex items-center gap-3 md:hidden">
+      <button id="mobileSearchBtn" class="text-gray-600 hover:text-orange-500 text-xl">🔍</button>
+      <button id="menuToggle" class="text-gray-600 hover:text-orange-500 text-2xl">☰</button>
+    </div>
+
+    <!-- Desktop menu -->
+    <nav id="mainMenu" class="hidden md:block">
+      <ul class="flex space-x-6">
+        <li><a href="../index.html" class="text-blue-600 font-medium hover:text-orange-500 transition">Trang chủ</a></li>
+        <li><a href="../review_list.html" class="text-gray-600 hover:text-orange-500 transition">Review</a></li>
+        <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Bảng xếp hạng</a></li>
+        <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Blog</a></li>
+        <li><a href="../lien_he.html" class="text-gray-600 hover:text-orange-500 transition">Liên hệ</a></li>
+      </ul>
+    </nav>
+
+    <!-- Desktop search -->
+    <div class="hidden md:flex items-center ml-4 relative">
+      <input id="searchInput" type="text" placeholder="Tìm sản phẩm..."
+        class="w-64 border border-gray-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"/>
+      <div id="suggestions" class="hidden absolute top-full left-0 right-0 mt-1 bg-white border rounded-md shadow z-50"></div>
+    </div>
+  </div>
+
+  <!-- Mobile search box -->
+  <div id="mobileSearchBox" class="hidden px-4 pb-3 bg-white border-t relative">
+    <input id="searchInputMobile" type="text" placeholder="Tìm sản phẩm..."
+      class="w-full border border-gray-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"/>
+    <div id="suggestionsMobile" class="hidden absolute left-4 right-4 bg-white border rounded-md shadow mt-1 z-50"></div>
+  </div>
+
+  <!-- Mobile menu (ngang) -->
+  <div id="mobileMenu" class="hidden bg-white border-t shadow-inner overflow-x-auto whitespace-nowrap no-scrollbar">
+    <ul class="flex space-x-4 px-4 py-2 text-sm">
+      <li><a href="../index.html" class="text-blue-600 font-medium hover:text-orange-500 transition">Trang chủ</a></li>
+      <li><a href="../review_list.html" class="text-gray-600 hover:text-orange-500 transition">Review</a></li>
+      <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Bảng xếp hạng</a></li>
+      <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Blog</a></li>
+      <li><a href="../lien_he.html" class="text-gray-600 hover:text-orange-500 transition">Liên hệ</a></li>
+    </ul>
+  </div>
+</header>
