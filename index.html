@@ -7,27 +7,32 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <link rel="icon" type="image/png" href="/images/favicon2.png">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-gray-50 min-h-screen flex flex-col">
 
   <!-- Header -->
-  <header class="bg-white shadow-sm sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-      <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-500 to-orange-500 bg-clip-text text-transparent">PickChuẩn</h1>
+  <!-- Header -->
+<header class="bg-white shadow-md sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto flex justify-between items-center px-4 py-3">
+    <!-- Logo -->
+    <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-500 to-orange-500 bg-clip-text text-transparent">
+      PickChuẩn
+    </h1>
 
-      <!-- Menu desktop -->
-      <nav class="hidden md:block">
-        <ul class="flex space-x-6">
-          <li><a href="index.html" class="text-blue-600 font-medium hover:text-orange-500 transition">Trang chủ</a></li>
-          <li><a href="review_list.html" class="text-gray-600 hover:text-orange-500 transition">Review</a></li>
-          <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Bảng xếp hạng</a></li>
-          <li><a href="/blog_list.html" class="text-gray-600 hover:text-orange-500 transition">Blog</a></li>
-          <li><a href="lien_he.html" class="text-gray-600 hover:text-orange-500 transition">Liên hệ</a></li>
-        </ul>
-      </nav>
+    <!-- Desktop menu -->
+    <nav id="mainMenu" class="hidden md:block">
+      <ul class="flex space-x-6">
+        <li><a href="/index.html" class="text-blue-600 font-medium hover:text-orange-500 transition">Trang chủ</a></li>
+        <li><a href="/review_list.html" class="text-gray-600 hover:text-orange-500 transition">Review</a></li>
+        <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Bảng xếp hạng</a></li>
+        <li><a href="/blog_list.html" class="text-gray-600 hover:text-orange-500 transition">Blog</a></li>
+        <li><a href="/lien_he.html" class="text-gray-600 hover:text-orange-500 transition">Liên hệ</a></li>
+      </ul>
+    </nav>
 
-      <!-- Ô tìm kiếm -->
-      <div class="hidden md:flex items-center ml-4 relative">
+    <!-- Desktop search -->
+    <div class="hidden md:flex items-center ml-4 relative">
       <input
         type="text"
         id="searchInput"
@@ -38,23 +43,16 @@
       <div id="suggestions" class="hidden absolute top-full left-0 right-0 mt-1 bg-white border rounded-md shadow z-50"></div>
     </div>
 
-      <!-- Nút menu mobile -->
-      <button id="menuBtn" class="md:hidden text-gray-600 hover:text-orange-500 focus:outline-none">
-        <i class="fas fa-bars text-xl"></i>
-      </button>
+    <!-- Mobile buttons -->
+    <div class="flex items-center gap-3 md:hidden">
+      <button id="mobileSearchBtn" class="text-gray-600 hover:text-orange-500 text-xl">🔍</button>
+      <button id="menuToggle" class="text-gray-600 hover:text-orange-500 text-2xl">☰</button>
     </div>
+  </div>
 
-    <!-- Menu mobile -->
-    <nav id="mobileMenu" class="hidden bg-white border-t md:hidden">
-      <ul class="flex flex-col text-center py-3 space-y-2">
-        <li><a href="/index.html" class="block text-blue-600 font-medium hover:text-orange-500">Trang chủ</a></li>
-        <li><a href="/review_list.html" class="block text-gray-600 hover:text-orange-500">Review</a></li>
-        <li><a href="#" class="block text-gray-600 hover:text-orange-500">Bảng xếp hạng</a></li>
-        <li><a href="/blog_list.html" class="block text-gray-600 hover:text-orange-500">Blog</a></li>
-        <li><a href="/lien_he.html" class="block text-gray-600 hover:text-orange-500">Liên hệ</a></li>
-      </ul>
-      <div class="px-4 pb-3 relative">
-      <input
+  <!-- 🔍 Mobile search box -->
+  <div id="mobileSearchBox" class="hidden px-4 pb-3 bg-white border-t relative">
+    <input
         type="text"
         id="searchInputMobile"
         placeholder="Tìm sản phẩm..."
@@ -62,10 +60,19 @@
         oninput="handleSearchMobile(this.value)"
       />
       <div id="suggestionsMobile" class="absolute left-0 right-0 top-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg z-50 hidden"></div>
-    </div>
-    </nav>
-  </header>
+  </div>
 
+  <!-- ☰ Mobile menu ngang -->
+  <div id="mobileMenu" class="hidden bg-white border-t shadow-inner overflow-x-auto whitespace-nowrap no-scrollbar">
+    <ul class="flex space-x-4 px-4 py-2 text-sm">
+      <li><a href="/index.html" class="text-blue-600 font-medium hover:text-orange-500 transition">Trang chủ</a></li>
+      <li><a href="/review_list.html" class="text-gray-600 hover:text-orange-500 transition">Review</a></li>
+      <li><a href="#" class="text-gray-600 hover:text-orange-500 transition">Bảng xếp hạng</a></li>
+      <li><a href="/blog_list.html" class="text-gray-600 hover:text-orange-500 transition">Blog</a></li>
+      <li><a href="/lien_he.html" class="text-gray-600 hover:text-orange-500 transition">Liên hệ</a></li>
+    </ul>
+  </div>
+</header>
   <!-- Banner -->
   <section class="text-white py-16 md:py-24 bg-cover bg-center"
     style="background-image:linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1470&q=80')">
@@ -115,10 +122,10 @@
         <div>
           <h3 class="font-semibold mb-3 border-b pb-2">Liên kết nhanh</h3>
           <ul class="space-y-2">
-            <li><a href="../index.html" class="text-gray-300 hover:text-white">Trang chủ</a></li>
-            <li><a href="../review_list.html" class="text-gray-300 hover:text-white">Review</a></li>
-            <li><a href="../blog_list.html" class="text-gray-300 hover:text-white">Blog</a></li>
-            <li><a href="../lien_he.html" class="text-gray-300 hover:text-white">Liên hệ</a></li>
+            <li><a href="/index.html" class="text-gray-300 hover:text-white">Trang chủ</a></li>
+            <li><a href="/review_list.html" class="text-gray-300 hover:text-white">Review</a></li>
+            <li><a href="/blog_list.html" class="text-gray-300 hover:text-white">Blog</a></li>
+            <li><a href="/lien_he.html" class="text-gray-300 hover:text-white">Liên hệ</a></li>
           </ul>
         </div>
         <div>
@@ -139,7 +146,7 @@
 
   <!-- Script -->
   <script>
-    const API_URL = "https://script.google.com/macros/s/AKfycbwWLsg8UdIAdhqrIraG59ciaFNqSl2Rx0Fsnev08QpyA_QgRKSFhNPAB2Md4qZNp3yZ/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbxr-ULaNINjbEmgiizeQlREF92FvGYSadPBEhprCuwgtz4Dc8fjmPolUOPfqXiu94YX/exec";
     const itemsPerPage = 6;
     let products = [];
     let currentPage = 1;
@@ -272,11 +279,6 @@
       document.getElementById("suggestions").classList.add("hidden");
       render();
     }
-
-    // Toggle mobile menu
-    document.getElementById("menuBtn").addEventListener("click", () => {
-      document.getElementById("mobileMenu").classList.toggle("hidden");
-    });
     function handleSearchMobile(value) {
       const box = document.getElementById("suggestionsMobile");
       if (!value) return box.classList.add("hidden");
@@ -285,15 +287,47 @@
       box.innerHTML = sug.map(s => `<div class="px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer" onclick="selectSuggestionMobile('${s.title}')">${s.title}</div>`).join("");
       box.classList.remove("hidden");
     }
-
     function selectSuggestionMobile(title) {
       document.getElementById("searchInputMobile").value = title;
       document.getElementById("suggestionsMobile").classList.add("hidden");
       render();
     }
 
-    // Khởi chạy
-    fetchData();
-  </script>
+// ==============================
+// 📱 MENU MOBILE + SEARCH BOX
+// ==============================
+document.addEventListener("DOMContentLoaded", () => {
+  const menuToggle = document.getElementById("menuToggle");
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileSearchBtn = document.getElementById("mobileSearchBtn");
+  const mobileSearchBox = document.getElementById("mobileSearchBox");
+
+  // Toggle menu ngang
+  menuToggle.addEventListener("click", () => {
+    const isMenuVisible = !mobileMenu.classList.contains("hidden");
+    mobileMenu.classList.toggle("hidden");
+    if (!isMenuVisible) {
+      // Nếu mở menu thì đảm bảo menu nằm trên search box
+      mobileMenu.classList.remove("hidden");
+      mobileMenu.style.zIndex = 51;
+      mobileSearchBox.style.zIndex = 50;
+    }
+  });
+
+  // Toggle ô tìm kiếm
+  mobileSearchBtn.addEventListener("click", () => {
+    const isSearchVisible = !mobileSearchBox.classList.contains("hidden");
+    mobileSearchBox.classList.toggle("hidden");
+    if (!isSearchVisible) {
+      // Nếu mở search thì đảm bảo menu nằm trên
+      mobileMenu.style.zIndex = 51;
+      mobileSearchBox.style.zIndex = 50;
+    }
+  });
+
+  fetchData();
+});
+</script>
+
 </body>
 </html>
