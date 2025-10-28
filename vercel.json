@@ -1,12 +1,7 @@
+
 {
   "rewrites": [
-    {
-      "source": "/review/:id",
-      "destination": "/review.html"
-    },
-    {
-      "source": "/:path*",
-      "destination": "/index.html"
-    }
-  ]
+    { "source": "/public/blog_list.json", "destination": "/public/blog_list.json" }
+  ],
+  "cleanUrls": true
 }
