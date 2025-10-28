@@ -1,7 +1,7 @@
 
 {
   "rewrites": [
-    { "source": "/public/blog_list.json", "destination": "/public/blog_list.json" }
+    { "source": "/api/blog_list.json", "destination": "/api/blog_list.json" }
   ],
   "cleanUrls": true
 }

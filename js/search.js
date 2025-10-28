@@ -31,7 +31,15 @@ function initHeaderFeatures() {
 
 async function fetchBlogList() {
   try {
-    const res = await fetch("/blog_list.json"); // KHÔNG cần /api/
+    // Tự phát hiện đang chạy ở local hay GitHub Pages
+    const isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+    
+    // Nếu local thì không thêm prefix
+    // Nếu chạy trên GitHub Pages thì thêm /pickchuan
+    const basePath = isLocal ? "" : "/pickchuan";
+
+    const res = await fetch(`${basePath}/api/blog_list.json`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const blogs = await res.json();
     console.log("📚 Đã tải blog list:", blogs);
     return blogs;
@@ -40,10 +48,6 @@ async function fetchBlogList() {
     return [];
   }
 }
-
-
-
-
 
 // --- Hàm hiển thị gợi ý tìm kiếm ---
 function setupSearch(blogs, inputId, suggestionId) {
