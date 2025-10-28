@@ -29,10 +29,16 @@ function initHeaderFeatures() {
   }
 }
 
-// --- Hàm tải danh sách blog ---
 async function fetchBlogList() {
   try {
-    const res = await fetch("/api/blog_list.json");
+    const origin = window.location.origin;
+    // Lấy phần repo nếu có
+    const repo = window.location.pathname.split("/")[1] || "";
+    const base = repo ? `/${repo}` : "";
+    const url = `${origin}${base}/api/blog_list.json`;
+
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const blogs = await res.json();
     console.log("📚 Đã tải blog list:", blogs);
     return blogs;
@@ -41,6 +47,8 @@ async function fetchBlogList() {
     return [];
   }
 }
+
+
 
 // --- Hàm hiển thị gợi ý tìm kiếm ---
 function setupSearch(blogs, inputId, suggestionId) {
