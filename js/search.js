@@ -32,7 +32,7 @@ function initHeaderFeatures() {
 // --- Hàm tải danh sách blog ---
 async function fetchBlogList() {
   try {
-    const res = await fetch("../api/blog_list.json");
+    const res = await fetch("/api/blog_list.json");
     const blogs = await res.json();
     console.log("📚 Đã tải blog list:", blogs);
     return blogs;

@@ -396,17 +396,6 @@
       `).join("")}
     `;
   }
-
-  // 🚀 Khi trang load, tự động fetch & render
-  document.addEventListener("DOMContentLoaded", async () => {
-    try {
-      const product = await fetchProduct();
-      renderProduct(product);
-    } catch (err) {
-      console.error(err);
-      document.getElementById("reviewContent").innerHTML = "<p class='text-red-500'>Không thể tải dữ liệu.</p>";
-    }
-  });
     
     function renderFeedback(data) {
     const box = document.getElementById("feedbackList");
