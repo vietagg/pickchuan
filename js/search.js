@@ -31,14 +31,22 @@ function initHeaderFeatures() {
 
 async function fetchBlogList() {
   try {
-    const origin = window.location.origin;
-    // Lấy phần repo nếu có
-    const repo = window.location.pathname.split("/")[1] || "";
-    const base = repo ? `/${repo}` : "";
-    const url = `${origin}${base}/api/blog_list.json`;
+    // Lấy URL tuyệt đối dựa vào vị trí file hiện tại
+    // Nếu chạy local hoặc GitHub Pages đều tự tính được
+    const currentPath = window.location.pathname;
+    let basePath = "";
+
+    // Nếu site nằm trong thư mục con "pickchuan" (GitHub Pages)
+    if (currentPath.includes("/pickchuan/")) {
+      basePath = "/pickchuan";
+    }
+
+    // Đường dẫn cố định tới file JSON
+    const url = `${basePath}/api/blog_list.json`;
 
     const res = await fetch(url);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
     const blogs = await res.json();
     console.log("📚 Đã tải blog list:", blogs);
     return blogs;
