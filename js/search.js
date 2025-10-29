@@ -31,7 +31,7 @@ function initHeaderFeatures() {
 
 async function fetchBlogList() {
   try {
-    const res = await fetch("/api/blog_list.json"); // ✅ dùng /
+    const res = await fetch("/api/blog_list.json"); // ✅ dùng tuyệt đối
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const blogs = await res.json();
     console.log("📚 Đã tải blog list:", blogs);
@@ -41,6 +41,7 @@ async function fetchBlogList() {
     return [];
   }
 }
+
 
 
 
