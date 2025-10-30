@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PickChuẩn - Trang chủ</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog list</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <link rel="icon" type="image/png" href="/images/favicon2.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="/images/favicon2.png">
 </head>
 <body class="bg-gray-50 min-h-screen flex flex-col">
 
@@ -88,15 +89,106 @@
   <!-- Main -->
   <main class="flex-grow max-w-7xl mx-auto px-4 py-8 lg:py-12 flex flex-col lg:flex-row gap-10">
     <!-- Danh sách sản phẩm -->
-    <div class="lg:w-3/4 space-y-8">
-      <h2 class="text-2xl font-bold mb-4">Danh sách sản phẩm</h2>
-      <div id="productList" class="grid grid-cols-1 sm:grid-cols-2 gap-6"></div>
-    </div>
+    <div class="lg:w-2/3">
+                <h2 class="text-2xl font-bold mb-8 text-gray-800 border-b pb-2">Bài viết mới nhất</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Post 1 -->
+                    <article class="bg-white rounded-lg overflow-hidden shadow-md post-card transition duration-300">
+                        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1526&q=80" alt="Laptop" class="w-full h-48 object-cover">
+                        <div class="p-5">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-800">Top 5 laptop văn phòng tốt nhất 2025</h3>
+                            <p class="text-gray-600 mb-4">Đánh giá chi tiết các mẫu laptop phù hợp nhất cho công việc văn phòng với hiệu năng ổn định và giá cả hợp lý.</p>
+                            <a href="../blog/Top_5_laptop_van_phong_tot_nhat_2025.html" class="text-blue-600 hover:text-orange-500 font-medium inline-flex items-center">
+                                Đọc thêm <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </article>
+                    
+                    <!-- Post 2 -->
+                    <article class="bg-white rounded-lg overflow-hidden shadow-md post-card transition duration-300">
+                        <img src="https://drive.google.com/thumbnail?id=1AjJYSKSHegV7WRM0ypMc-0WDO6VQdTlM&sz=w1000" alt="Smartphone" class="w-full h-48 object-cover">
+                        <div class="p-5">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-800">So sánh iPhone 17 và Xiaomi 17 </h3>
+                            <p class="text-gray-600 mb-4">Phân tích điểm mạnh yếu của hai flagship hàng đầu hiện nay để giúp bạn đưa ra quyết định mua sắm phù hợp.</p>
+                            <a href="../blog/So_sanh_iPhone_17_va_Xiaomi_17.html" class="text-blue-600 hover:text-orange-500 font-medium inline-flex items-center">
+                                Đọc thêm <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </article>
+                    
+                    <!-- Post 3 -->
+                    <article class="bg-white rounded-lg overflow-hidden shadow-md post-card transition duration-300">
+                        <img src="https://drive.google.com/thumbnail?id=1K5vSFbiXtMQHBenOWvFo2a2EkETRKzuQ&sz=w1000" alt="Headphones" class="w-full h-48 object-cover">
+                        <div class="p-5">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-800">Tai nghe không dây tốt nhất dưới 3 triệu</h3>
+                            <p class="text-gray-600 mb-4">Tổng hợp các mẫu tai nghe không dây chất lượng cao với mức giá dưới 3 triệu đồng, phù hợp với nhiều nhu cầu sử dụng.</p>
+                            <a href="../blog/Tai_nghe_khong_day_tot_nhat_duoi_3_trieu.html" class="text-blue-600 hover:text-orange-500 font-medium inline-flex items-center">
+                                Đọc thêm <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </article>
+                    
+                    <!-- Post 4  1jxbv7vGfuG9A74p7coddyRQF7cI62WaI-->
+                    <article class="bg-white rounded-lg overflow-hidden shadow-md post-card transition duration-300">
+                        <img src="https://drive.google.com/thumbnail?id=1jxbv7vGfuG9A74p7coddyRQF7cI62WaI&sz=w1000" 
+                        alt="Smartwatch" class="w-full h-48 object-cover">
+                        <div class="p-5">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-800">Đánh giá đồng hồ thông minh Xiaomi 2025</h3>
+                            <p class="text-gray-600 mb-4">Trải nghiệm thực tế các tính năng nổi bật của đồng hồ thông minh Xiaomi mới nhất với giá thành hấp dẫn.</p>
+                            <a href="../blog/danh_gia_dong_ho_thong_minh_xiaomi_2025.html" class="text-blue-600 hover:text-orange-500 font-medium inline-flex items-center">
+                                Đọc thêm <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </article>
+                    
+                    <!-- Post 5 -->
+                    <article class="bg-white rounded-lg overflow-hidden shadow-md post-card transition duration-300">
+                        <img src="https://images.unsplash.com/photo-1520390138845-fd2d229dd553?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1489&q=80" alt="Camera" class="w-full h-48 object-cover">
+                        <div class="p-5">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-800">Máy ảnh mirrorless cho người mới bắt đầu</h3>
+                            <p class="text-gray-600 mb-4">Hướng dẫn chọn máy ảnh mirrorless phù hợp cho người mới với các tiêu chí về giá cả, tính năng và dễ sử dụng.</p>
+                            <a href="../blog/May_anh_mirrorless_cho_nguoi_moi_bat_dau.html" class="text-blue-600 hover:text-orange-500 font-medium inline-flex items-center">
+                                Đọc thêm <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </article>
+                    
+                    <!-- Post 6 -->
+                    <article class="bg-white rounded-lg overflow-hidden shadow-md post-card transition duration-300">
+                        <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" alt="Gaming" class="w-full h-48 object-cover">
+                        <div class="p-5">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-800">PC gaming giá 20 triệu - Cấu hình tối ưu</h3>
+                            <p class="text-gray-600 mb-4">Gợi ý cấu hình PC gaming mạnh mẽ với ngân sách 20 triệu đồng, cân bằng giữa hiệu năng và giá thành.</p>
+                            <a href="../blog/PC_Gaming_gia_20_trieu_Cau_hinh_toi_uu_2025.html" class="text-blue-600 hover:text-orange-500 font-medium inline-flex items-center">
+                                Đọc thêm <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+                
+                <!-- Pagination -->
+                <div class="mt-10 flex justify-center">
+                    <nav class="flex items-center space-x-2">
+                        <a href="#" class="px-4 py-2 border border-gray-300 rounded-md text-gray-600 hover:bg-blue-50">
+                            <i class="fas fa-chevron-left"></i>
+                        </a>
+                        <a href="#" class="px-4 py-2 border border-blue-500 bg-blue-500 text-white rounded-md">1</a>
+                        <a href="#" class="px-4 py-2 border border-gray-300 rounded-md text-gray-600 hover:bg-blue-50">2</a>
+                        <a href="#" class="px-4 py-2 border border-gray-300 rounded-md text-gray-600 hover:bg-blue-50">3</a>
+                        <span class="px-4 py-2 text-gray-600">...</span>
+                        <a href="#" class="px-4 py-2 border border-gray-300 rounded-md text-gray-600 hover:bg-blue-50">10</a>
+                        <a href="#" class="px-4 py-2 border border-gray-300 rounded-md text-gray-600 hover:bg-blue-50">
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </nav>
+                </div>
+            </div>
 
     <!-- Sidebar -->
-    <aside class="lg:w-1/4 space-y-6">
+    <aside class="lg:w-1/3 space-y-6">
       <div class="bg-white p-5 rounded-lg shadow-md">
-        <h3 class="text-xl font-bold mb-4 text-gray-800 border-b pb-2">Bài viết nổi bật</h3>
+        <h3 class="text-xl font-bold mb-4 text-gray-800 border-b pb-2">Bài review sản phẩm</h3>
         <ul id="featuredList" class="space-y-4"></ul>
       </div>
     </aside>
@@ -213,25 +305,6 @@ const API_URL = "https://script.google.com/macros/s/AKfycbxr-ULaNINjbEmgiizeQlRE
       const totalPages = Math.ceil(filtered.length / itemsPerPage);
       const start = (currentPage - 1) * itemsPerPage;
       const paginated = filtered.slice(start, start + itemsPerPage);
-
-      // Render danh sách
-      const list = document.getElementById("productList");
-      list.innerHTML = paginated.map(item => `
-        <a href="review.html?id=${item.id}" 
-          class="block bg-white rounded-lg shadow-md overflow-hidden flex flex-col hover:shadow-lg hover:scale-[1.02] transform transition duration-300">
-          <div class="aspect-[1/1] bg-gray-100">
-            <img src="${item.image}" alt="${item.title}" class="w-full h-full object-contain" />
-          </div>
-          <div class="p-4 flex flex-col flex-grow">
-            <h3 class="text-lg font-semibold text-gray-800 mb-3 line-clamp-2">${item.title}</h3>
-            <span class="mt-auto inline-block bg-orange-500 hover:bg-orange-600 text-white text-sm px-4 py-2 rounded-md font-medium transition self-start">
-              Xem chi tiết
-            </span>
-          </div>
-        </a>
-      `).join("");
-
-
       // Render sidebar
      document.getElementById("featuredList").innerHTML = products.slice(0, 10).map(item => `
         <li class="transition-transform duration-300 hover:scale-105 hover:shadow-md rounded-md overflow-hidden">
