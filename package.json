@@ -1,5 +1,21 @@
 {
   "devDependencies": {
     "tailwindcss": "^4.1.14"
+  },
+  "name": "pickchuan-web",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "generate_sitemap.js",
+  "scripts": {
+    "sitemap": "node generate_sitemap.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "node-fetch": "^3.3.2",
+    "sitemap": "^9.0.0"
   }
 }
