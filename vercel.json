@@ -10,9 +10,5 @@
         { "key": "Access-Control-Allow-Origin", "value": "*" }
       ]
     }
-  ],
-  "redirects": [
-    { "source": "/", "destination": "/index.html" }
   ]
 }
-
