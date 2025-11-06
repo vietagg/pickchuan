@@ -1,0 +1,617 @@
+Folder PATH listing for volume New Volume
+Volume serial number is B25D-3FD1
+D:.
+│   blog_list.html
+│   blog_mau.html
+│   footer.html
+│   generate_reviews.js
+│   generate_sitemap.js
+│   header.html
+│   index.html
+│   lien_he.html
+│   package-lock.json
+│   package.json
+│   review.html
+│   review_list.html
+│   robots.txt
+│   script.js
+│   sitemap.xml
+│   structure.txt
+│   style.css
+│   vercel.json
+│   
+├───.github
+│   └───workflows
+│           sitemap.yml
+│           
+├───api
+│       blog_list.json
+│       
+├───blog
+│       danh_gia_dong_ho_thong_minh_xiaomi_2025.html
+│       May_anh_mirrorless_cho_nguoi_moi_bat_dau.html
+│       PC_Gaming_gia_20_trieu_Cau_hinh_toi_uu_2025.html
+│       So_sanh_iPhone_17_va_Xiaomi_17.html
+│       Tai_nghe_khong_day_tot_nhat_duoi_3_trieu.html
+│       Top_5_laptop_van_phong_tot_nhat_2025.html
+│       
+├───images
+│       favicon.png
+│       favicon2.png
+│       logoPickchuan.png
+│       
+├───js
+│       common.js
+│       search.js
+│       
+├───node_modules
+│   │   .package-lock.json
+│   │   
+│   ├───.bin
+│   │       sitemap
+│   │       sitemap.cmd
+│   │       sitemap.ps1
+│   │       
+│   ├───@types
+│   │   ├───node
+│   │   │   │   assert.d.ts
+│   │   │   │   async_hooks.d.ts
+│   │   │   │   buffer.buffer.d.ts
+│   │   │   │   buffer.d.ts
+│   │   │   │   child_process.d.ts
+│   │   │   │   cluster.d.ts
+│   │   │   │   console.d.ts
+│   │   │   │   constants.d.ts
+│   │   │   │   crypto.d.ts
+│   │   │   │   dgram.d.ts
+│   │   │   │   diagnostics_channel.d.ts
+│   │   │   │   dns.d.ts
+│   │   │   │   domain.d.ts
+│   │   │   │   events.d.ts
+│   │   │   │   fs.d.ts
+│   │   │   │   globals.d.ts
+│   │   │   │   globals.typedarray.d.ts
+│   │   │   │   http.d.ts
+│   │   │   │   http2.d.ts
+│   │   │   │   https.d.ts
+│   │   │   │   index.d.ts
+│   │   │   │   inspector.d.ts
+│   │   │   │   inspector.generated.d.ts
+│   │   │   │   LICENSE
+│   │   │   │   module.d.ts
+│   │   │   │   net.d.ts
+│   │   │   │   os.d.ts
+│   │   │   │   package.json
+│   │   │   │   path.d.ts
+│   │   │   │   perf_hooks.d.ts
+│   │   │   │   process.d.ts
+│   │   │   │   punycode.d.ts
+│   │   │   │   querystring.d.ts
+│   │   │   │   readline.d.ts
+│   │   │   │   README.md
+│   │   │   │   repl.d.ts
+│   │   │   │   sea.d.ts
+│   │   │   │   sqlite.d.ts
+│   │   │   │   stream.d.ts
+│   │   │   │   string_decoder.d.ts
+│   │   │   │   test.d.ts
+│   │   │   │   timers.d.ts
+│   │   │   │   tls.d.ts
+│   │   │   │   trace_events.d.ts
+│   │   │   │   tty.d.ts
+│   │   │   │   url.d.ts
+│   │   │   │   util.d.ts
+│   │   │   │   v8.d.ts
+│   │   │   │   vm.d.ts
+│   │   │   │   wasi.d.ts
+│   │   │   │   worker_threads.d.ts
+│   │   │   │   zlib.d.ts
+│   │   │   │   
+│   │   │   ├───assert
+│   │   │   │       strict.d.ts
+│   │   │   │       
+│   │   │   ├───compatibility
+│   │   │   │       iterators.d.ts
+│   │   │   │       
+│   │   │   ├───dns
+│   │   │   │       promises.d.ts
+│   │   │   │       
+│   │   │   ├───fs
+│   │   │   │       promises.d.ts
+│   │   │   │       
+│   │   │   ├───readline
+│   │   │   │       promises.d.ts
+│   │   │   │       
+│   │   │   ├───stream
+│   │   │   │       consumers.d.ts
+│   │   │   │       promises.d.ts
+│   │   │   │       web.d.ts
+│   │   │   │       
+│   │   │   ├───timers
+│   │   │   │       promises.d.ts
+│   │   │   │       
+│   │   │   ├───ts5.6
+│   │   │   │   │   buffer.buffer.d.ts
+│   │   │   │   │   globals.typedarray.d.ts
+│   │   │   │   │   index.d.ts
+│   │   │   │   │   
+│   │   │   │   └───compatibility
+│   │   │   │           float16array.d.ts
+│   │   │   │           
+│   │   │   ├───ts5.7
+│   │   │   │   │   index.d.ts
+│   │   │   │   │   
+│   │   │   │   └───compatibility
+│   │   │   │           float16array.d.ts
+│   │   │   │           
+│   │   │   └───web-globals
+│   │   │           abortcontroller.d.ts
+│   │   │           crypto.d.ts
+│   │   │           domexception.d.ts
+│   │   │           events.d.ts
+│   │   │           fetch.d.ts
+│   │   │           navigator.d.ts
+│   │   │           storage.d.ts
+│   │   │           streams.d.ts
+│   │   │           
+│   │   └───sax
+│   │           index.d.ts
+│   │           LICENSE
+│   │           package.json
+│   │           README.md
+│   │           
+│   ├───arg
+│   │       index.d.ts
+│   │       index.js
+│   │       LICENSE.md
+│   │       package.json
+│   │       README.md
+│   │       
+│   ├───data-uri-to-buffer
+│   │   │   package.json
+│   │   │   README.md
+│   │   │   
+│   │   ├───dist
+│   │   │       index.d.ts
+│   │   │       index.js
+│   │   │       index.js.map
+│   │   │       
+│   │   └───src
+│   │           index.ts
+│   │           
+│   ├───fetch-blob
+│   │       file.d.ts
+│   │       file.js
+│   │       from.d.ts
+│   │       from.js
+│   │       index.d.ts
+│   │       index.js
+│   │       LICENSE
+│   │       package.json
+│   │       README.md
+│   │       streams.cjs
+│   │       
+│   ├───formdata-polyfill
+│   │       esm.min.d.ts
+│   │       esm.min.js
+│   │       formdata-to-blob.js
+│   │       FormData.js
+│   │       formdata.min.js
+│   │       LICENSE
+│   │       package.json
+│   │       README.md
+│   │       
+│   ├───fs-extra
+│   │   │   LICENSE
+│   │   │   package.json
+│   │   │   README.md
+│   │   │   
+│   │   └───lib
+│   │       │   esm.mjs
+│   │       │   index.js
+│   │       │   
+│   │       ├───copy
+│   │       │       copy-sync.js
+│   │       │       copy.js
+│   │       │       index.js
+│   │       │       
+│   │       ├───empty
+│   │       │       index.js
+│   │       │       
+│   │       ├───ensure
+│   │       │       file.js
+│   │       │       index.js
+│   │       │       link.js
+│   │       │       symlink-paths.js
+│   │       │       symlink-type.js
+│   │       │       symlink.js
+│   │       │       
+│   │       ├───fs
+│   │       │       index.js
+│   │       │       
+│   │       ├───json
+│   │       │       index.js
+│   │       │       jsonfile.js
+│   │       │       output-json-sync.js
+│   │       │       output-json.js
+│   │       │       
+│   │       ├───mkdirs
+│   │       │       index.js
+│   │       │       make-dir.js
+│   │       │       utils.js
+│   │       │       
+│   │       ├───move
+│   │       │       index.js
+│   │       │       move-sync.js
+│   │       │       move.js
+│   │       │       
+│   │       ├───output-file
+│   │       │       index.js
+│   │       │       
+│   │       ├───path-exists
+│   │       │       index.js
+│   │       │       
+│   │       ├───remove
+│   │       │       index.js
+│   │       │       
+│   │       └───util
+│   │               async.js
+│   │               stat.js
+│   │               utimes.js
+│   │               
+│   ├───graceful-fs
+│   │       clone.js
+│   │       graceful-fs.js
+│   │       legacy-streams.js
+│   │       LICENSE
+│   │       package.json
+│   │       polyfills.js
+│   │       README.md
+│   │       
+│   ├───jsonfile
+│   │       index.js
+│   │       LICENSE
+│   │       package.json
+│   │       README.md
+│   │       utils.js
+│   │       
+│   ├───node-domexception
+│   │   │   index.js
+│   │   │   LICENSE
+│   │   │   package.json
+│   │   │   README.md
+│   │   │   
+│   │   └───.history
+│   │           index_20210527203842.js
+│   │           index_20210527203947.js
+│   │           index_20210527204259.js
+│   │           index_20210527204418.js
+│   │           index_20210527204756.js
+│   │           index_20210527204833.js
+│   │           index_20210527211208.js
+│   │           index_20210527211248.js
+│   │           index_20210527212722.js
+│   │           index_20210527212731.js
+│   │           index_20210527212746.js
+│   │           index_20210527212900.js
+│   │           index_20210527213022.js
+│   │           index_20210527213822.js
+│   │           index_20210527213843.js
+│   │           index_20210527213852.js
+│   │           index_20210527213910.js
+│   │           index_20210527214034.js
+│   │           index_20210527214643.js
+│   │           index_20210527214654.js
+│   │           index_20210527214700.js
+│   │           package_20210527203733.json
+│   │           package_20210527203825.json
+│   │           package_20210527204621.json
+│   │           package_20210527204913.json
+│   │           package_20210527204925.json
+│   │           package_20210527205145.json
+│   │           package_20210527205156.json
+│   │           README_20210527203617.md
+│   │           README_20210527212714.md
+│   │           README_20210527213345.md
+│   │           README_20210527213411.md
+│   │           README_20210527213803.md
+│   │           README_20210527214323.md
+│   │           README_20210527214408.md
+│   │           test_20210527205603.js
+│   │           test_20210527205957.js
+│   │           test_20210527210021.js
+│   │           
+│   ├───node-fetch
+│   │   │   LICENSE.md
+│   │   │   package.json
+│   │   │   README.md
+│   │   │   
+│   │   ├───@types
+│   │   │       index.d.ts
+│   │   │       
+│   │   └───src
+│   │       │   body.js
+│   │       │   headers.js
+│   │       │   index.js
+│   │       │   request.js
+│   │       │   response.js
+│   │       │   
+│   │       ├───errors
+│   │       │       abort-error.js
+│   │       │       base.js
+│   │       │       fetch-error.js
+│   │       │       
+│   │       └───utils
+│   │               get-search.js
+│   │               is-redirect.js
+│   │               is.js
+│   │               multipart-parser.js
+│   │               referrer.js
+│   │               
+│   ├───sax
+│   │   │   LICENSE.md
+│   │   │   package.json
+│   │   │   README.md
+│   │   │   
+│   │   └───lib
+│   │           sax.js
+│   │           
+│   ├───sitemap
+│   │   │   api.md
+│   │   │   CHANGELOG.md
+│   │   │   CLAUDE.md
+│   │   │   CODE_OF_CONDUCT.md
+│   │   │   eslint.config.mjs
+│   │   │   jest.config.cjs
+│   │   │   LICENSE
+│   │   │   package.json
+│   │   │   README.md
+│   │   │   tsconfig.cjs.json
+│   │   │   tsconfig.jest.json
+│   │   │   
+│   │   ├───dist
+│   │   │   ├───cjs
+│   │   │   │   │   index.d.ts
+│   │   │   │   │   index.js
+│   │   │   │   │   package.json
+│   │   │   │   │   
+│   │   │   │   └───lib
+│   │   │   │           constants.d.ts
+│   │   │   │           constants.js
+│   │   │   │           errors.d.ts
+│   │   │   │           errors.js
+│   │   │   │           sitemap-index-parser.d.ts
+│   │   │   │           sitemap-index-parser.js
+│   │   │   │           sitemap-index-stream.d.ts
+│   │   │   │           sitemap-index-stream.js
+│   │   │   │           sitemap-item-stream.d.ts
+│   │   │   │           sitemap-item-stream.js
+│   │   │   │           sitemap-parser.d.ts
+│   │   │   │           sitemap-parser.js
+│   │   │   │           sitemap-simple.d.ts
+│   │   │   │           sitemap-simple.js
+│   │   │   │           sitemap-stream.d.ts
+│   │   │   │           sitemap-stream.js
+│   │   │   │           sitemap-xml.d.ts
+│   │   │   │           sitemap-xml.js
+│   │   │   │           types.d.ts
+│   │   │   │           types.js
+│   │   │   │           utils.d.ts
+│   │   │   │           utils.js
+│   │   │   │           validation.d.ts
+│   │   │   │           validation.js
+│   │   │   │           xmllint.d.ts
+│   │   │   │           xmllint.js
+│   │   │   │           
+│   │   │   └───esm
+│   │   │       │   cli.d.ts
+│   │   │       │   cli.js
+│   │   │       │   index.d.ts
+│   │   │       │   index.js
+│   │   │       │   
+│   │   │       └───lib
+│   │   │               constants.d.ts
+│   │   │               constants.js
+│   │   │               errors.d.ts
+│   │   │               errors.js
+│   │   │               sitemap-index-parser.d.ts
+│   │   │               sitemap-index-parser.js
+│   │   │               sitemap-index-stream.d.ts
+│   │   │               sitemap-index-stream.js
+│   │   │               sitemap-item-stream.d.ts
+│   │   │               sitemap-item-stream.js
+│   │   │               sitemap-parser.d.ts
+│   │   │               sitemap-parser.js
+│   │   │               sitemap-simple.d.ts
+│   │   │               sitemap-simple.js
+│   │   │               sitemap-stream.d.ts
+│   │   │               sitemap-stream.js
+│   │   │               sitemap-xml.d.ts
+│   │   │               sitemap-xml.js
+│   │   │               types.d.ts
+│   │   │               types.js
+│   │   │               utils.d.ts
+│   │   │               utils.js
+│   │   │               validation.d.ts
+│   │   │               validation.js
+│   │   │               xmllint.d.ts
+│   │   │               xmllint.js
+│   │   │               
+│   │   └───schema
+│   │           all.xsd
+│   │           sitemap.xsd
+│   │           
+│   ├───slugify
+│   │       CHANGELOG.md
+│   │       LICENSE
+│   │       package.json
+│   │       README.md
+│   │       slugify.d.ts
+│   │       slugify.js
+│   │       
+│   ├───tailwindcss
+│   │   │   index.css
+│   │   │   LICENSE
+│   │   │   package.json
+│   │   │   preflight.css
+│   │   │   README.md
+│   │   │   theme.css
+│   │   │   utilities.css
+│   │   │   
+│   │   └───dist
+│   │           chunk-G32FJCSR.mjs
+│   │           chunk-HTB5LLOP.mjs
+│   │           chunk-MC3TVECV.mjs
+│   │           colors-b_6i0Oi7.d.ts
+│   │           colors.d.mts
+│   │           colors.d.ts
+│   │           colors.js
+│   │           colors.mjs
+│   │           default-theme.d.mts
+│   │           default-theme.d.ts
+│   │           default-theme.js
+│   │           default-theme.mjs
+│   │           flatten-color-palette.d.mts
+│   │           flatten-color-palette.d.ts
+│   │           flatten-color-palette.js
+│   │           flatten-color-palette.mjs
+│   │           lib.d.mts
+│   │           lib.d.ts
+│   │           lib.js
+│   │           lib.mjs
+│   │           plugin.d.mts
+│   │           plugin.d.ts
+│   │           plugin.js
+│   │           plugin.mjs
+│   │           resolve-config-BIFUA2FY.d.ts
+│   │           resolve-config-QUZ9b-Gn.d.mts
+│   │           types-WlZgYgM8.d.mts
+│   │           
+│   ├───undici-types
+│   │       agent.d.ts
+│   │       api.d.ts
+│   │       balanced-pool.d.ts
+│   │       cache-interceptor.d.ts
+│   │       cache.d.ts
+│   │       client-stats.d.ts
+│   │       client.d.ts
+│   │       connector.d.ts
+│   │       content-type.d.ts
+│   │       cookies.d.ts
+│   │       diagnostics-channel.d.ts
+│   │       dispatcher.d.ts
+│   │       env-http-proxy-agent.d.ts
+│   │       errors.d.ts
+│   │       eventsource.d.ts
+│   │       fetch.d.ts
+│   │       formdata.d.ts
+│   │       global-dispatcher.d.ts
+│   │       global-origin.d.ts
+│   │       h2c-client.d.ts
+│   │       handlers.d.ts
+│   │       header.d.ts
+│   │       index.d.ts
+│   │       interceptors.d.ts
+│   │       LICENSE
+│   │       mock-agent.d.ts
+│   │       mock-call-history.d.ts
+│   │       mock-client.d.ts
+│   │       mock-errors.d.ts
+│   │       mock-interceptor.d.ts
+│   │       mock-pool.d.ts
+│   │       package.json
+│   │       patch.d.ts
+│   │       pool-stats.d.ts
+│   │       pool.d.ts
+│   │       proxy-agent.d.ts
+│   │       readable.d.ts
+│   │       README.md
+│   │       retry-agent.d.ts
+│   │       retry-handler.d.ts
+│   │       snapshot-agent.d.ts
+│   │       util.d.ts
+│   │       utility.d.ts
+│   │       webidl.d.ts
+│   │       websocket.d.ts
+│   │       
+│   ├───universalify
+│   │       index.js
+│   │       LICENSE
+│   │       package.json
+│   │       README.md
+│   │       
+│   └───web-streams-polyfill
+│       │   LICENSE
+│       │   package.json
+│       │   README.md
+│       │   
+│       ├───dist
+│       │   │   polyfill.es2018.js
+│       │   │   polyfill.es2018.js.map
+│       │   │   polyfill.es2018.min.js
+│       │   │   polyfill.es2018.min.js.map
+│       │   │   polyfill.es2018.mjs
+│       │   │   polyfill.es2018.mjs.map
+│       │   │   polyfill.es6.js
+│       │   │   polyfill.es6.js.map
+│       │   │   polyfill.es6.min.js
+│       │   │   polyfill.es6.min.js.map
+│       │   │   polyfill.es6.mjs
+│       │   │   polyfill.es6.mjs.map
+│       │   │   polyfill.js
+│       │   │   polyfill.js.map
+│       │   │   polyfill.min.js
+│       │   │   polyfill.min.js.map
+│       │   │   polyfill.mjs
+│       │   │   polyfill.mjs.map
+│       │   │   ponyfill.es2018.js
+│       │   │   ponyfill.es2018.js.map
+│       │   │   ponyfill.es2018.mjs
+│       │   │   ponyfill.es2018.mjs.map
+│       │   │   ponyfill.es6.js
+│       │   │   ponyfill.es6.js.map
+│       │   │   ponyfill.es6.mjs
+│       │   │   ponyfill.es6.mjs.map
+│       │   │   ponyfill.js
+│       │   │   ponyfill.js.map
+│       │   │   ponyfill.mjs
+│       │   │   ponyfill.mjs.map
+│       │   │   
+│       │   └───types
+│       │       │   polyfill.d.ts
+│       │       │   ponyfill.d.ts
+│       │       │   tsdoc-metadata.json
+│       │       │   
+│       │       └───ts3.6
+│       │               polyfill.d.ts
+│       │               ponyfill.d.ts
+│       │               
+│       ├───es2018
+│       │       package.json
+│       │       
+│       ├───es6
+│       │       package.json
+│       │       
+│       └───ponyfill
+│           │   package.json
+│           │   
+│           ├───es2018
+│           │       package.json
+│           │       
+│           └───es6
+│                   package.json
+│                   
+└───review
+        10-goojodoq-quat-turbo-jet-4000-mah-co-the-sac-lai-cam-tay-di-djong-gio-manh-toc-djo-cao-100-vongphut.html
+        11-chuot-khong-day-bluetooth-logitech-m550-signature-smartwheel-giam-on-4000dpi-dja-thiet-bi.html
+        12-ban-phim-co-khong-day-aula-f75-ho-tro-hotswap-led-rgb-nhieu-che-djo-3-mode-ket-noi-tien-loi.html
+        13-may-say-goojodoq-toc-toc-djo-cao-may-thoi-ion-am-chuyen-nghiep-lam-djep-cham-soc-toc-salon-lam-kho-nhanh.html
+        2-goojodoq-gfs006-4000mah-turbo-jet-mini-fan-rechargeable-ice-flake-cooling-handheld-portable-strong-wind-high-speed-100-level.html
+        3-goojodoq-quat-gap-3-trong-1-180-im-lang-100-cap-djo-co-the-djieu-chinh-sieu-nang-luong-gio-quat-di-djong-man-hinh-led.html
+        4-sac-du-phong-qpow2-baseus-20000mah-pd-225w-30w-hai-cong-tien-dung-cho-djien-thoai.html
+        5-cu-sac-nhanh-baseus-pd-20w-gan5-1c-type-c-sac-nhanh-antoan-cho-djien-thoai-va-cac-loai-may-tinh-bang.html
+        6-iphone-15-128gb-chinh-hang-vna.html
+        7-mini-pc-hp-z2-g5-workstation-optin-danh-cho-van-phong.html
+        8-ugreen-bo-sac-nhanh-type-c-30w-20w-pd-30-wall-charger-usb-c-power-adapter-thich-hop-cho-for-iphone-1515-mini14-pro13-pro-max1211xr-galaxy-pixel-43.html
+        9-ao-so-mi-coc-tay-dekace-premium-oxford-theu-b.html
+        
